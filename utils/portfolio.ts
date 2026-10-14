@@ -27,3 +27,26 @@ export const companyLinks = {
   desk360: 'https://www.linkedin.com/company/locaweb/',
   cuca: 'https://www.linkedin.com/company/cucafrescainformatica/',
 } as const
+
+export const experienceMedia = {
+  greenn: {
+    site: 'https://greenn.com.br/',
+    host: 'greenn.com.br',
+    shot: '/images/experience/greenn-home.jpg',
+  },
+  tray: {
+    site: 'https://tray.com.br/',
+    host: 'tray.com.br',
+    shot: '/images/experience/tray-home.png',
+  },
+  desk360: {
+    site: 'https://www.facebook.com/Desk360?locale=pt_BR',
+    host: 'desk360.com.br',
+    shot: '/images/experience/desk360.jpg',
+  },
+  cuca: {
+    site: 'https://www.cucafresca.com.br/',
+    host: 'cucafresca.com.br',
+    shot: '/images/experience/cuca-fresca-home.png',
+  },
+} as const

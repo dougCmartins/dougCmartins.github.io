@@ -1,4 +1,4 @@
-import { companyLinks, experienceStacks } from '~/utils/portfolio'
+import { companyLinks, experienceMedia, experienceStacks } from '~/utils/portfolio'
 
 export const portfolioLocales = ['pt-BR', 'en', 'es'] as const
 
@@ -16,16 +16,27 @@ const openGraphLocales: Record<PortfolioLocale, string> = {
   es: 'es_ES',
 }
 
+type ImpactCopy = {
+  value: string
+  label: string
+}
+
 type JobCopy = {
   id: string
   company: string
   domain: string
+  challenge: string
   role: string
   period: string
   stack: readonly string[]
   linkedin: string
   linkedinLabel: string
-  achievements: readonly string[]
+  site: string
+  siteLabel: string
+  host: string
+  shot: string
+  shotAlt: string
+  impacts: readonly ImpactCopy[]
 }
 
 type StudyCopy = {
@@ -73,6 +84,8 @@ export type PortfolioCopy = {
     label: string
     title: string
     intro: readonly string[]
+    challengeLabel: string
+    impactLabel: string
     jobs: readonly JobCopy[]
   }
   stack: {
@@ -102,10 +115,10 @@ export type PortfolioCopy = {
 }
 
 const sharedJobs = {
-  greenn: { id: 'greenn', company: 'Greenn', stack: experienceStacks.greenn, linkedin: companyLinks.greenn },
-  tray: { id: 'tray', company: 'Tray', stack: experienceStacks.tray, linkedin: companyLinks.tray },
-  desk360: { id: 'desk360', company: 'Desk360', stack: experienceStacks.desk360, linkedin: companyLinks.desk360 },
-  cuca: { id: 'cuca', company: 'Cuca Fresca Informática', stack: experienceStacks.cuca, linkedin: companyLinks.cuca },
+  greenn: { id: 'greenn', company: 'Greenn', stack: experienceStacks.greenn, linkedin: companyLinks.greenn, site: experienceMedia.greenn.site, host: experienceMedia.greenn.host, shot: experienceMedia.greenn.shot },
+  tray: { id: 'tray', company: 'Tray', stack: experienceStacks.tray, linkedin: companyLinks.tray, site: experienceMedia.tray.site, host: experienceMedia.tray.host, shot: experienceMedia.tray.shot },
+  desk360: { id: 'desk360', company: 'Desk360', stack: experienceStacks.desk360, linkedin: companyLinks.desk360, site: experienceMedia.desk360.site, host: experienceMedia.desk360.host, shot: experienceMedia.desk360.shot },
+  cuca: { id: 'cuca', company: 'Cuca Fresca Informática', stack: experienceStacks.cuca, linkedin: companyLinks.cuca, site: experienceMedia.cuca.site, host: experienceMedia.cuca.host, shot: experienceMedia.cuca.shot },
 } as const
 
 function buildCopy(locale: PortfolioLocale, copy: Omit<PortfolioCopy, 'meta'> & { meta: Omit<PortfolioCopy['meta'], 'openGraphLocale'> }): PortfolioCopy {
@@ -162,59 +175,73 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
       label: 'Experiência',
       title: 'Onde fiz a diferença.',
       intro: ['Plataformas digitais, desafios complexos', 'e a engenharia por trás deles.'],
+      challengeLabel: 'Desafio',
+      impactLabel: 'Impacto',
       jobs: [
         {
           ...sharedJobs.greenn,
           domain: 'Ecossistema de vendas digitais',
+          challenge: 'Assumi a evolução de componentes críticos do ecossistema financeiro e educacional, em filas, ERP, conciliação bancária, saques e segurança. Eliminei o requeue histórico de mais de 12 mil mensagens retidas, otimizei consultas legadas com cursores e paginação incremental e integrei o Panda IA ao fluxo de cursos, no processamento de legendas e na orquestração dos assistentes. No Cursor, skills e commands MCP entraram na análise, na implementação e na revisão.',
+          siteLabel: 'Site da Greenn',
+          shotAlt: 'Página inicial da Greenn',
           role: 'Desenvolvedor Back-end (autônomo)',
           period: 'fev. 2025 — set. 2026',
           linkedinLabel: 'LinkedIn da Greenn',
-          achievements: [
-            'Refatorei filas críticas do sistema legado, que retinham mensagens para reprocessamento, com micro-jobs em PHP e Laravel, e eliminei o requeue de 12 mil mensagens.',
-            'Otimizei consultas do ERP, cujo processamento repetia leituras no banco, usando cursores em MySQL.',
-            'Integrei a Panda IA ao fluxo de cursos com arquitetura de filas e orquestrador de status, sem webhooks.',
-            'Desenvolvi componentes em JavaScript e Vue.js e APIs de conversão de moedas para a internacionalização da plataforma.',
-            'Corrigi vulnerabilidades da aplicação seguindo OWASP e implementei 2FA e ACL.',
-            'Refatorei o fluxo de saques, que trata GMV e chargeback, no sistema de pagamentos.',
-            'Desenvolvi Skills no Cursor e Commands MCP, com DDD e Clean Code como contexto, para análise, implementação e revisão de código.',
+          impacts: [
+            { value: '12 mil+', label: 'mensagens retidas' },
+            { value: 'Tutor IA', label: 'legendas e assistentes' },
+            { value: 'ERP', label: 'cursores e paginação' },
+            { value: 'Segurança', label: 'OWASP, 2FA e ACL' },
+            { value: 'Saques', label: 'GMV, chargeback e retenção' },
+            { value: 'Cursor', label: 'skills e MCP' },
           ],
         },
         {
           ...sharedJobs.tray,
           domain: 'Plataforma de e-commerce',
+          challenge: 'Atuei na evolução da plataforma de e-commerce e assumi a logística Multi-CD, o acesso de Enterprise e Top Sellers e a modernização do backoffice. Desenvolvi o roteamento e o cálculo de frete entre centros de distribuição, o ACL por IP, horário e perfil, a migração de fluxos de PHP para Laravel e Vue.js e, com UX, o fluxo guiado da configuração inicial.',
+          siteLabel: 'Site da Tray',
+          shotAlt: 'Página inicial da Tray',
           role: 'Desenvolvedor Full Stack pleno',
           period: 'out. 2021 — nov. 2024',
           linkedinLabel: 'LinkedIn da Tray',
-          achievements: [
-            'Projetei um serviço de geolocalização no back-end, em PHP, para o cálculo e o roteamento de fretes do Multi-CD.',
-            'Desenvolvi um motor de ACL para clientes Enterprise e Top Sellers, com controle de acesso por IP, horário e perfil.',
-            'Conduzi a migração de fluxos do Backoffice, escritos em PHP legado, para Laravel e Vue.js.',
-            'Liderei o desenho técnico de um fluxo de configuração guiada para a ativação de clientes.',
+          impacts: [
+            { value: 'Multi-CD', label: 'roteamento e frete' },
+            { value: 'ACL', label: 'IP, horário e perfil' },
+            { value: 'Laravel', label: 'fluxos e Vue.js' },
+            { value: 'Onboarding', label: 'ativação com UX' },
           ],
         },
         {
           ...sharedJobs.desk360,
           domain: 'Startup do Grupo Locaweb',
+          challenge: 'Entrei na fase inicial da startup e participei da evolução da plataforma omnichannel, dos primeiros clientes de teste até mais de 400 clientes reais. Modelei APIs REST em Laravel com JSON:API e os relacionamentos em MySQL, e construí em Vue.js o atendimento, a base de conhecimento e a comunicação interna.',
+          siteLabel: 'Site da Desk360',
+          shotAlt: 'Banner da plataforma Desk360',
           role: 'Desenvolvedor Full Stack júnior',
           period: 'set. 2018 — set. 2021',
           linkedinLabel: 'LinkedIn da Locaweb',
-          achievements: [
-            'Participei da evolução da plataforma omnichannel de atendimento, desde a fase inicial, até 400+ clientes reais.',
-            'Desenvolvi APIs REST em PHP e Laravel com JSON:API, modelando relacionamentos de dados em MySQL.',
-            'Desenvolvi interfaces em JavaScript e Vue.js.',
-            'Desenvolvi funcionalidades de atendimento, base de conhecimento e chat interno.',
+          impacts: [
+            { value: '400+', label: 'clientes reais' },
+            { value: 'JSON:API', label: 'APIs e MySQL' },
+            { value: 'Vue.js', label: 'atendimento' },
+            { value: 'Base + Chat', label: 'comunicação interna' },
           ],
         },
         {
           ...sharedJobs.cuca,
           domain: 'Desenvolvimento de software e web',
+          challenge: 'Migrei a ferramenta de atendimento do desktop Clarion para a web, com Angular 4, Node.js e PostgreSQL, incluindo a distribuição de mensagens entre setores. Também ajustei sistemas em PHP e participei da refatoração do site institucional em HTML, CSS e Bootstrap.',
+          siteLabel: 'Site da Cuca Fresca Informática',
+          shotAlt: 'Página inicial da Cuca Fresca',
           role: 'Programador júnior',
           period: 'mar. 2017 — ago. 2018',
           linkedinLabel: 'LinkedIn da Cuca Fresca Informática',
-          achievements: [
-            'Migrei uma ferramenta de atendimento desktop, feita em Clarion, para web com Angular 4, Node.js e PostgreSQL.',
-            'Desenvolvi funcionalidades e correções em PHP nos sistemas web da empresa.',
-            'Participei da refatoração do site institucional em HTML5, CSS e Bootstrap.',
+          impacts: [
+            { value: 'Web', label: 'Clarion migrado' },
+            { value: 'Angular 4', label: 'mensagens entre setores' },
+            { value: 'PHP', label: 'sistemas internos' },
+            { value: 'Site', label: 'HTML, CSS e Bootstrap' },
           ],
         },
       ],
@@ -314,59 +341,73 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
       label: 'Experience',
       title: 'Where I’ve made a difference.',
       intro: ['Digital platforms, complex challenges,', 'and the engineering behind them.'],
+      challengeLabel: 'Challenge',
+      impactLabel: 'Impact',
       jobs: [
         {
           ...sharedJobs.greenn,
           domain: 'Digital sales ecosystem',
+          challenge: 'I took on critical parts of the financial and education ecosystem: queues, the ERP, bank reconciliation, withdrawals, and security. I cleared the historical requeue of more than 12 thousand held messages, optimized legacy queries with cursors and incremental pagination, and integrated Panda AI into the course flow, for caption processing and assistant orchestration. In Cursor, skills and MCP commands became part of analysis, implementation, and review.',
+          siteLabel: 'Greenn website',
+          shotAlt: 'Greenn homepage',
           role: 'Back-end Developer',
           period: 'Feb 2025 — Sep 2026',
           linkedinLabel: 'Greenn on LinkedIn',
-          achievements: [
-            'Refactored critical queues in the legacy system, which held messages for reprocessing, with PHP and Laravel micro-jobs, and eliminated the requeue of 12,000 messages.',
-            'Optimized ERP queries, whose processing repeated database reads, using MySQL cursors.',
-            'Integrated Panda AI into the course workflow with a queue architecture and a status orchestrator, without webhooks.',
-            'Built JavaScript and Vue.js components and currency conversion APIs for the platform internationalization.',
-            'Remediated application vulnerabilities following OWASP and implemented 2FA and ACL.',
-            'Refactored the withdrawal flow, which handles GMV and chargeback, in the payments system.',
-            'Developed Cursor Skills and MCP Commands, with DDD and Clean Code as context, for analysis, implementation, and code review.',
+          impacts: [
+            { value: '12k+', label: 'held messages' },
+            { value: 'AI tutor', label: 'captions and assistants' },
+            { value: 'ERP', label: 'cursors and pagination' },
+            { value: 'Security', label: 'OWASP, 2FA, and ACL' },
+            { value: 'Withdrawals', label: 'GMV, chargeback, and retention' },
+            { value: 'Cursor', label: 'skills and MCP' },
           ],
         },
         {
           ...sharedJobs.tray,
           domain: 'E-commerce platform',
+          challenge: 'I worked on the e-commerce platform and took on Multi-CD logistics, access for Enterprise and Top Sellers, and the backoffice modernization. I built routing and freight calculation across distribution centers, ACL by IP, schedule, and profile, the move from PHP flows to Laravel and Vue.js, and, with UX, the guided flow for the initial store setup.',
+          siteLabel: 'Tray website',
+          shotAlt: 'Tray homepage',
           role: 'Mid-level Full-Stack Developer',
           period: 'Oct 2021 — Nov 2024',
           linkedinLabel: 'Tray on LinkedIn',
-          achievements: [
-            'Designed a back-end geolocation service, in PHP, for Multi-CD shipping calculation and routing.',
-            'Built an ACL engine for Enterprise customers and Top Sellers, with access control by IP, schedule, and profile.',
-            'Led the migration of Backoffice workflows, written in legacy PHP, to Laravel and Vue.js.',
-            'Led the technical design of a guided configuration flow for customer activation.',
+          impacts: [
+            { value: 'Multi-CD', label: 'routing and freight' },
+            { value: 'ACL', label: 'IP, schedule, and profile' },
+            { value: 'Laravel', label: 'flows and Vue.js' },
+            { value: 'Onboarding', label: 'activation with UX' },
           ],
         },
         {
           ...sharedJobs.desk360,
           domain: 'Locaweb Group startup',
+          challenge: 'I joined the startup at its initial stage and took part in the omnichannel platform as it grew from the first test customers to more than 400 real customers. I modeled REST APIs in Laravel with JSON:API and the MySQL relationships, and built the service desk, knowledge base, and internal communication in Vue.js.',
+          siteLabel: 'Desk360 website',
+          shotAlt: 'Desk360 platform banner',
           role: 'Junior Full-Stack Developer',
           period: 'Sep 2018 — Sep 2021',
           linkedinLabel: 'Locaweb on LinkedIn',
-          achievements: [
-            'Helped evolve the omnichannel customer service platform, from its initial stage, to 400+ real customers.',
-            'Developed REST APIs in PHP and Laravel with JSON:API, modeling data relationships in MySQL.',
-            'Built JavaScript and Vue.js interfaces.',
-            'Developed customer service, knowledge base, and internal chat features.',
+          impacts: [
+            { value: '400+', label: 'real customers' },
+            { value: 'JSON:API', label: 'APIs and MySQL' },
+            { value: 'Vue.js', label: 'customer service' },
+            { value: 'Base + Chat', label: 'internal communication' },
           ],
         },
         {
           ...sharedJobs.cuca,
           domain: 'Software & web development',
+          challenge: 'I migrated the customer-service tool from the Clarion desktop to the web, with Angular 4, Node.js, and PostgreSQL, including message distribution across departments. I also adjusted PHP systems and took part in the institutional site refactor in HTML, CSS, and Bootstrap.',
+          siteLabel: 'Cuca Fresca Informática website',
+          shotAlt: 'Cuca Fresca homepage',
           role: 'Junior Programmer',
           period: 'Mar 2017 — Aug 2018',
           linkedinLabel: 'Cuca Fresca Informática on LinkedIn',
-          achievements: [
-            'Migrated a desktop customer service tool, built in Clarion, to the web with Angular 4, Node.js, and PostgreSQL.',
-            'Developed PHP features and fixes for the company web systems.',
-            'Contributed to an institutional website refactor using HTML5, CSS, and Bootstrap.',
+          impacts: [
+            { value: 'Web', label: 'Clarion migrated' },
+            { value: 'Angular 4', label: 'messages across departments' },
+            { value: 'PHP', label: 'internal systems' },
+            { value: 'Site', label: 'HTML, CSS, and Bootstrap' },
           ],
         },
       ],
@@ -466,59 +507,73 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
       label: 'Experiencia',
       title: 'Donde marqué la diferencia.',
       intro: ['Plataformas digitales, desafíos complejos', 'y la ingeniería detrás de ellos.'],
+      challengeLabel: 'Desafío',
+      impactLabel: 'Impacto',
       jobs: [
         {
           ...sharedJobs.greenn,
           domain: 'Ecosistema de ventas digitales',
+          challenge: 'Asumí la evolución de componentes críticos del ecosistema financiero y educativo, en colas, ERP, conciliación bancaria, retiros y seguridad. Eliminé el requeue histórico de más de 12 mil mensajes retenidos, optimicé consultas legadas con cursores y paginación incremental e integré Panda IA al flujo de cursos, en el procesamiento de subtítulos y en la orquestación de los asistentes. En Cursor, skills y commands MCP entraron en el análisis, la implementación y la revisión.',
+          siteLabel: 'Sitio de Greenn',
+          shotAlt: 'Página de inicio de Greenn',
           role: 'Desarrollador Back-end',
           period: 'feb. 2025 — sep. 2026',
           linkedinLabel: 'LinkedIn de Greenn',
-          achievements: [
-            'Refactoricé colas críticas del sistema legado, que retenían mensajes para reprocesamiento, con micro-jobs en PHP y Laravel, y eliminé el requeue de 12 mil mensajes.',
-            'Optimicé consultas del ERP, cuyo procesamiento repetía lecturas en la base, usando cursores en MySQL.',
-            'Integré Panda IA al flujo de cursos con arquitectura de colas y orquestador de estado, sin webhooks.',
-            'Desarrollé componentes en JavaScript y Vue.js y APIs de conversión de moneda para la internacionalización de la plataforma.',
-            'Corregí vulnerabilidades de la aplicación siguiendo OWASP e implementé 2FA y ACL.',
-            'Refactoricé el flujo de retiros, que trata GMV y chargeback, en el sistema de pagos.',
-            'Desarrollé Skills en Cursor y Commands MCP, con DDD y Clean Code como contexto, para análisis, implementación y revisión de código.',
+          impacts: [
+            { value: '12 mil+', label: 'mensajes retenidos' },
+            { value: 'Tutor IA', label: 'subtítulos y asistentes' },
+            { value: 'ERP', label: 'cursores y paginación' },
+            { value: 'Seguridad', label: 'OWASP, 2FA y ACL' },
+            { value: 'Retiros', label: 'GMV, chargeback y retención' },
+            { value: 'Cursor', label: 'skills y MCP' },
           ],
         },
         {
           ...sharedJobs.tray,
           domain: 'Plataforma de e-commerce',
+          challenge: 'Actué en la evolución de la plataforma de e-commerce y asumí la logística Multi-CD, el acceso de Enterprise y Top Sellers y la modernización del backoffice. Desarrollé el enrutamiento y el cálculo de envío entre centros de distribución, el ACL por IP, horario y perfil, la migración de flujos de PHP a Laravel y Vue.js y, con UX, el flujo guiado de la configuración inicial.',
+          siteLabel: 'Sitio de Tray',
+          shotAlt: 'Página de inicio de Tray',
           role: 'Desarrollador Full Stack semi-senior',
           period: 'oct. 2021 — nov. 2024',
           linkedinLabel: 'LinkedIn de Tray',
-          achievements: [
-            'Diseñé un servicio de geolocalización en el back-end, en PHP, para el cálculo y el enrutamiento de envíos del Multi-CD.',
-            'Desarrollé un motor de ACL para clientes Enterprise y Top Sellers, con control de acceso por IP, horario y perfil.',
-            'Conduje la migración de flujos del Backoffice, escritos en PHP legado, a Laravel y Vue.js.',
-            'Lideré el diseño técnico de un flujo de configuración guiada para la activación de clientes.',
+          impacts: [
+            { value: 'Multi-CD', label: 'enrutamiento y envío' },
+            { value: 'ACL', label: 'IP, horario y perfil' },
+            { value: 'Laravel', label: 'flujos y Vue.js' },
+            { value: 'Onboarding', label: 'activación con UX' },
           ],
         },
         {
           ...sharedJobs.desk360,
           domain: 'Startup del Grupo Locaweb',
+          challenge: 'Entré en la etapa inicial de la startup y participé en la evolución de la plataforma omnicanal, desde los primeros clientes de prueba hasta más de 400 clientes reales. Modelé APIs REST en Laravel con JSON:API y las relaciones en MySQL, y construí en Vue.js la atención, la base de conocimiento y la comunicación interna.',
+          siteLabel: 'Sitio de Desk360',
+          shotAlt: 'Banner de la plataforma Desk360',
           role: 'Desarrollador Full Stack júnior',
           period: 'sep. 2018 — sep. 2021',
           linkedinLabel: 'LinkedIn de Locaweb',
-          achievements: [
-            'Participé en la evolución de la plataforma omnicanal de atención, desde la etapa inicial, hasta 400+ clientes reales.',
-            'Desarrollé APIs REST en PHP y Laravel con JSON:API, modelando relacionamientos de datos en MySQL.',
-            'Desarrollé interfaces en JavaScript y Vue.js.',
-            'Desarrollé funcionalidades de atención, base de conocimiento y chat interno.',
+          impacts: [
+            { value: '400+', label: 'clientes reales' },
+            { value: 'JSON:API', label: 'APIs y MySQL' },
+            { value: 'Vue.js', label: 'atención' },
+            { value: 'Base + Chat', label: 'comunicación interna' },
           ],
         },
         {
           ...sharedJobs.cuca,
           domain: 'Desarrollo de software y web',
+          challenge: 'Migré la herramienta de atención del escritorio Clarion a la web, con Angular 4, Node.js y PostgreSQL, incluida la distribución de mensajes entre sectores. También ajusté sistemas en PHP y participé en la refactorización del sitio institucional en HTML, CSS y Bootstrap.',
+          siteLabel: 'Sitio de Cuca Fresca Informática',
+          shotAlt: 'Página de inicio de Cuca Fresca',
           role: 'Programador júnior',
           period: 'mar. 2017 — ago. 2018',
           linkedinLabel: 'LinkedIn de Cuca Fresca Informática',
-          achievements: [
-            'Migré una herramienta de atención de escritorio, hecha en Clarion, a la web con Angular 4, Node.js y PostgreSQL.',
-            'Desarrollé funcionalidades y correcciones en PHP en los sistemas web de la empresa.',
-            'Participé en la refactorización del sitio institucional en HTML5, CSS y Bootstrap.',
+          impacts: [
+            { value: 'Web', label: 'Clarion migrado' },
+            { value: 'Angular 4', label: 'mensajes entre sectores' },
+            { value: 'PHP', label: 'sistemas internos' },
+            { value: 'Sitio', label: 'HTML, CSS y Bootstrap' },
           ],
         },
       ],

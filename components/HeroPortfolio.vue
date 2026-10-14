@@ -19,7 +19,10 @@
         <p class="hero-role">{{ copy.hero.role }}</p>
         <p class="hero-summary">{{ copy.hero.summary }}</p>
         <div class="pills hero-stack">
-          <span v-for="item in currentStack" :key="item" class="stack-pill">{{ item }}</span>
+          <span v-for="item in currentStack" :key="item" class="stack-pill">
+            <StackMark :name="item" />
+            {{ item }}
+          </span>
         </div>
         <div class="hero-actions">
           <a class="portfolio-button portfolio-button-primary" :href="contact.github" target="_blank" rel="noreferrer">
@@ -172,6 +175,10 @@ const { copy } = usePortfolioLocale()
   margin-top: 22px;
   max-width: 620px;
   animation: fade-up 600ms 220ms var(--ease-enter) both;
+}
+
+.hero-stack .stack-pill {
+  gap: 6px;
 }
 
 .hero-actions {

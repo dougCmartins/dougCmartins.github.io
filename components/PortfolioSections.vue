@@ -65,22 +65,39 @@
       </div>
       <div class="experience-list">
         <article v-for="job in copy.experience.jobs" :key="job.id" class="experience-card reveal">
-          <div>
-            <span class="experience-period">{{ job.period }}</span>
+          <div class="experience-copy">
+            <p class="experience-domain">{{ job.domain }}</p>
             <h3>
               <a class="company-link" :href="job.linkedin" target="_blank" rel="noreferrer" :aria-label="job.linkedinLabel">{{ job.company }}</a>
             </h3>
-            <p class="experience-domain">{{ job.domain }}</p>
-          </div>
-          <div>
-            <h4 class="experience-role">{{ job.role }}</h4>
-            <ul>
-              <li v-for="text in job.achievements" :key="text">{{ text }}</li>
-            </ul>
+            <p class="experience-meta">{{ job.role }} · {{ job.period }}</p>
+            <p class="experience-kicker">{{ copy.experience.challengeLabel }}</p>
+            <p class="experience-challenge">{{ job.challenge }}</p>
+            <p class="experience-kicker">{{ copy.experience.impactLabel }}</p>
+            <div class="experience-impacts">
+              <p v-for="impact in job.impacts" :key="impact.value + impact.label">
+                <strong>{{ impact.value }}</strong>
+                <span>{{ impact.label }}</span>
+              </p>
+            </div>
             <div class="pills">
-              <span v-for="item in job.stack" :key="item" class="stack-pill">{{ item }}</span>
+              <span v-for="item in job.stack" :key="item" class="stack-pill">
+                <StackMark :name="item" />
+                {{ item }}
+              </span>
             </div>
           </div>
+          <a class="experience-window" :href="job.site" target="_blank" rel="noreferrer" :aria-label="job.siteLabel">
+            <span class="experience-window-bar">
+              <span class="experience-window-dots" aria-hidden="true">
+                <span />
+                <span />
+                <span />
+              </span>
+              <span class="experience-window-host">{{ job.host }}</span>
+            </span>
+            <img class="experience-shot" :src="job.shot" :alt="job.shotAlt">
+          </a>
         </article>
       </div>
     </div>
@@ -348,17 +365,156 @@ onBeforeUnmount(() => {
 
 .experience-card {
   display: grid;
-  grid-template-columns: 0.7fr 1.3fr;
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
   gap: 48px;
+  align-items: center;
   padding: 32px;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 12px;
 }
 
-.experience-period {
-  font-size: 12px;
+.experience-card:nth-child(even) .experience-window {
+  order: -1;
+  justify-self: end;
+}
+
+.experience-copy {
+  min-width: 0;
+}
+
+.experience-domain {
+  margin: 0;
   color: var(--muted-foreground);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+
+.experience-meta {
+  margin: 0;
+  color: var(--muted-foreground);
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.experience-kicker {
+  margin: 22px 0 8px;
+  color: var(--muted-foreground);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  line-height: 16px;
+  text-transform: uppercase;
+}
+
+.experience-challenge {
+  margin: 0;
+  color: var(--p-color);
+  font-size: 15px;
+  line-height: 24px;
+}
+
+.experience-impacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 0;
+}
+
+.experience-impacts p {
+  flex: 1 1 7.5rem;
+  min-width: max-content;
+  max-width: 100%;
+  margin: 0;
+}
+
+.experience-impacts strong {
+  display: block;
+  color: var(--foreground);
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 28px;
+}
+
+.experience-impacts span {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted-foreground);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.experience-copy .pills {
+  margin-top: 22px;
+}
+
+.experience-window {
+  display: block;
+  width: min(100%, 560px);
+  justify-self: start;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.experience-window:focus-visible {
+  outline: 1px solid var(--body-ink);
+  outline-offset: 3px;
+}
+
+.experience-window-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 36px;
+  padding: 0 12px;
+  background: #1a1c1c;
+}
+
+.experience-window-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.experience-window-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.experience-window-dots span:nth-child(1) {
+  background: #ff5f57;
+}
+
+.experience-window-dots span:nth-child(2) {
+  background: #febc2e;
+}
+
+.experience-window-dots span:nth-child(3) {
+  background: #28c840;
+}
+
+.experience-window-host {
+  color: var(--muted-foreground);
+  font-size: 12px;
+  line-height: 1;
+}
+
+.experience-shot {
+  display: block;
+  width: 100%;
+  height: 244px;
+  max-height: 280px;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.experience-card .stack-pill {
+  gap: 6px;
 }
 
 .experience-card h3 {
@@ -573,9 +729,13 @@ onBeforeUnmount(() => {
   }
 
   .experience-card {
-    gap: 28px;
+    grid-template-columns: 1fr;
     padding: 28px;
-    grid-template-columns: 0.8fr 1.2fr;
+  }
+
+  .experience-card:nth-child(even) .experience-window {
+    order: 0;
+    justify-self: start;
   }
 
   .stack-groups {
@@ -619,9 +779,11 @@ onBeforeUnmount(() => {
   }
 
   .experience-card {
-    grid-template-columns: 1fr;
-    gap: 22px;
     padding: 24px;
+  }
+
+  .experience-shot {
+    height: 180px;
   }
 
   .experience-card h3 {
