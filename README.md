@@ -54,7 +54,7 @@ Docker continua disponível: `make up` sobe o serviço `frontend` na mesma porta
 
 Título, descrição, URL canónica, Open Graph e o JSON-LD usam `NUXT_PUBLIC_SITE_URL`. O idioma da etiqueta `lang` segue o seletor da página.
 
-Em local o valor é `http://localhost:3000` (ver `.env.example`). Em produção, defina o domínio público antes do build.
+Em local o valor é `http://localhost:3000` (ver `.env.example`). O site publicado fica em [dougcmartins.github.io](https://dougcmartins.github.io/). O workflow de Pages define `NUXT_PUBLIC_SITE_URL` com esse endereço antes do `npm run generate`.
 
 ## Autor
 

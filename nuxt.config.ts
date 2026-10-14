@@ -139,7 +139,6 @@ export default defineNuxtConfig({
           'cache-control': 'public, max-age=31536000, immutable',
         },
       },
-      ...(process.env.NODE_ENV === 'production' ? { '/': { swr: 3600 } } : {}),
     },
   },
   postcss: {
