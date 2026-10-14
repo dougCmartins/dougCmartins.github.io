@@ -1,6 +1,6 @@
 <template>
   <section id="about" class="page-section">
-    <div v-reveal class="content-width about-grid reveal">
+    <div class="content-width about-grid reveal">
       <div>
         <div class="eyebrow">
           <span class="section-number">01</span>
@@ -47,7 +47,7 @@
 
   <section id="experience" class="page-section">
     <div class="content-width">
-      <div v-reveal class="section-head reveal">
+      <div class="section-head reveal">
         <div>
           <div class="eyebrow">
             <span class="section-number">02</span>
@@ -64,7 +64,7 @@
         </p>
       </div>
       <div class="experience-list">
-        <article v-for="job in copy.experience.jobs" :key="job.id" v-reveal class="experience-card reveal">
+        <article v-for="job in copy.experience.jobs" :key="job.id" class="experience-card reveal">
           <div>
             <span class="experience-period">{{ job.period }}</span>
             <h3>
@@ -88,7 +88,7 @@
 
   <section id="stack" class="page-section">
     <div class="content-width">
-      <div v-reveal class="section-head reveal">
+      <div class="section-head reveal">
         <div>
           <div class="eyebrow">
             <span class="section-number">03</span>
@@ -105,7 +105,7 @@
         </p>
       </div>
       <div class="stack-groups">
-        <div v-for="group in stackGroups" :key="group.name" v-reveal class="stack-group reveal">
+        <div v-for="group in stackGroups" :key="group.name" class="stack-group reveal">
           <h3>{{ group.name }}</h3>
           <div class="pills">
             <span v-for="item in group.items" :key="item" class="stack-pill">{{ item }}</span>
@@ -117,7 +117,7 @@
 
   <section id="education" class="page-section">
     <div class="content-width">
-      <div v-reveal class="section-head reveal">
+      <div class="section-head reveal">
         <div>
           <div class="eyebrow">
             <span class="section-number">04</span>
@@ -127,7 +127,7 @@
           <h2 class="section-title">{{ copy.education.title }}</h2>
         </div>
       </div>
-      <div v-reveal class="education-grid reveal">
+      <div class="education-grid reveal">
         <div>
           <p class="education-label">{{ copy.education.academicLabel }}</p>
           <div v-for="item in copy.education.academic" :key="item.id" class="education-row">
@@ -157,7 +157,7 @@
   </section>
 
   <section id="contact" class="page-section contact-section">
-    <div v-reveal class="content-width reveal">
+    <div class="content-width reveal">
       <div class="eyebrow">
         <span class="section-number">05</span>
         <span class="eyebrow-line" />
@@ -247,28 +247,32 @@ const stackGroups = computed(() => copy.value.stack.groups.map((name, index) => 
   items: stackGroupItems[index] ?? [],
 })))
 
-const revealObservers = new Set<IntersectionObserver>()
+let revealObserver: IntersectionObserver | undefined
+let revealFrame = 0
 
-const vReveal = {
-  mounted(element: HTMLElement) {
-    const observer = new IntersectionObserver((entries) => {
+onMounted(() => {
+  revealFrame = requestAnimationFrame(() => {
+    revealObserver = new IntersectionObserver((entries) => {
       for (const entry of entries) {
         if (!entry.isIntersecting) {
           continue
         }
-        element.classList.add('is-visible')
-        observer.unobserve(element)
+        entry.target.classList.add('is-visible')
+        revealObserver?.unobserve(entry.target)
       }
     }, { threshold: 0.08 })
-    observer.observe(element)
-    revealObservers.add(observer)
-  },
-}
+
+    for (const section of document.querySelectorAll('#about, #experience, #stack, #education, #contact')) {
+      for (const element of section.querySelectorAll('.reveal')) {
+        revealObserver.observe(element)
+      }
+    }
+  })
+})
 
 onBeforeUnmount(() => {
-  for (const observer of revealObservers) {
-    observer.disconnect()
-  }
+  cancelAnimationFrame(revealFrame)
+  revealObserver?.disconnect()
 })
 </script>
 
