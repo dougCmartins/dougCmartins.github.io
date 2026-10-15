@@ -11,12 +11,12 @@ export const currentStack = ['Laravel', 'PHP', 'Vue 3', 'Nuxt', 'MySQL', 'Docker
 export const stackGroupItems = [
   ['PHP', 'Laravel', 'JavaScript', 'Vue.js', 'TypeScript', 'Nuxt', 'Angular', 'Node.js', 'HTML5', 'CSS3', 'Bootstrap', 'Tailwind'],
   ['MySQL', 'PostgreSQL', 'Elasticsearch', 'Docker', 'Git'],
-  ['Clean Code', 'DDD', 'REST APIs', 'Queues', 'Security', 'Fraud prevention', 'Scrum', 'Kanban', 'Cursor', 'MCP', 'AI'],
+  ['Clean Code', 'DDD', 'REST APIs', 'Queues', 'RabbitMQ', 'Datadog', 'New Relic', 'Security', 'Fraud prevention', 'Scrum', 'Kanban', 'Cursor', 'MCP', 'AI'],
 ] as const
 
 export const experienceStacks = {
   greenn: ['PHP', 'Laravel', 'MySQL', 'JavaScript', 'Vue.js', 'Nuxt.js', 'Cursor', 'IA generativa'],
-  tray: ['PHP', 'Laravel', 'JavaScript', 'Vue.js'],
+  tray: ['PHP', 'Laravel', 'JavaScript', 'Vue.js', 'New Relic'],
   desk360: ['PHP', 'Laravel', 'Vue.js', 'MySQL', 'JavaScript', 'JSON:API'],
   cuca: ['PHP', 'JavaScript', 'Angular 4', 'Node.js', 'PostgreSQL', 'HTML5', 'CSS', 'Bootstrap'],
 } as const

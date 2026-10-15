@@ -12,30 +12,30 @@ Fonte: `Douglas_da_Cruz_Martins.docx`.
 - Disponível para: freelance / full-time / remoto
 
 ## Headline
-Desenvolvedor Full Stack | PHP, Laravel, MySQL, JavaScript, Vue.js
+Desenvolvedor Backend/Full Stack | PHP, Laravel, MySQL, JavaScript, Vue.js
 
 ## Subtítulo
-Desenvolvedor Full Stack com mais de 6 anos em PHP, Laravel, JavaScript e MySQL, em pagamentos, e-commerce e plataformas digitais. Experiência em APIs REST, arquitetura de software, Clean Code, mensageria, performance de consultas e segurança. Interfaces em Vue.js. Uso de Git, Docker e de Cursor na revisão de código.
+Desenvolvedor Backend/Full Stack com mais de 6 anos de experiência no desenvolvimento e evolução de aplicações web, com foco em PHP, Laravel, JavaScript, Vue.js e MySQL. Atuação em plataformas de e-commerce, pagamentos e produtos digitais, incluindo modernização de sistemas legados, otimização de consultas, mensageria, controle de acesso e segurança de aplicações. Experiência na evolução de sistemas legados de alta criticidade, de bases PHP para Laravel e Vue.js. Experiência na Tray, do grupo LWSA, e na Desk360, startup do grupo Locaweb. Experiência no desenvolvimento de APIs, integração de funcionalidades e automação de fluxos de desenvolvimento com ferramentas de IA. Perfil orientado à resolução de problemas técnicos e à evolução de sistemas existentes, buscando aliar qualidade de código, confiabilidade e necessidades do negócio.
 
 ## Stack / Linguagens
 - Técnicas: PHP, Laravel, JavaScript, MySQL, Vue.js, TypeScript, HTML5, CSS3, Nuxt, Angular, Node.js, Bootstrap, Tailwind, PostgreSQL, Elasticsearch
-- Ferramentas: Git, Docker, Scrum, Kanban, Cursor, MCP, DDD, Clean Code
+- Ferramentas: Git, Docker, RabbitMQ, Datadog, New Relic, Scrum, Kanban, Cursor, MCP, DDD, Clean Code
 - Especialidades: Arquitetura de Software, Mensageria/Filas, Segurança, Prevenção a Fraudes, AI
 
 ## Experiência
 1. Greenn — Ecossistema de vendas digitais — Desenvolvedor Back-end — 02/2025 – 09/2026 — PHP, Laravel, MySQL, JavaScript, Vue.js, Nuxt.js, Cursor, IA generativa
-   - Refatorei filas críticas, eliminando requeue de 12 mil mensagens.
-   - Otimizei consultas do ERP em MySQL, com cursores.
-   - Integrei a Panda IA ao fluxo de cursos com arquitetura de filas e orquestrador de status, sem webhooks.
-   - Desenvolvi componentes em JavaScript e Vue.js e APIs de conversão de moedas para internacionalização da plataforma.
-   - Corrigi vulnerabilidades OWASP e implementei 2FA e ACL.
-   - Refatorei o fluxo de saques com GMV e chargeback.
-   - Desenvolvi Skills no Cursor e Commands MCP, com DDD pragmático e Clean Code, para análise, implementação e revisão de código.
-2. Tray — Plataforma de E-commerce — Full Stack Developer (Pleno) — 10/2021 – 11/2024 — PHP, Laravel, JavaScript, Vue.js
-   - Projetei serviço de geolocalização no back-end para cálculo e roteamento complexo de fretes no Multi-CD.
-   - Desenvolvi funcionalidades e motor de ACL para controle de acesso por IP, horários e perfis customizados de clientes Enterprise e Top Sellers.
-   - Conduzi a migração estrutural de fluxos do Backoffice de PHP legado para Laravel e Vue.js.
-   - Liderei tecnicamente um fluxo de configuração guiada para facilitar a ativação de clientes.
+   - Refatorei filas críticas em RabbitMQ do Greenn Club, corrigindo N+1 com micro-jobs, e eliminei o requeue de mais de 12 mil mensagens. Acompanhei filas e APIs com Datadog.
+   - Otimizei consultas do ERP com cursores e paginação incremental.
+   - Integrei o Tutor IA, que utilizava o motor do Panda, ao fluxo de cursos com filas e orquestrador de status, sem webhooks.
+   - Desenvolvi componentes em JavaScript e Vue.js e APIs de conversão de moedas para a internacionalização da plataforma.
+   - Corrigi vulnerabilidades da aplicação seguindo OWASP e implementei 2FA e ACL.
+   - Refatorei o fluxo de saques com GMV, chargeback, retenção e cooldown.
+   - Desenvolvi Skills no Cursor e Commands MCP, com DDD e Clean Code como contexto, para análise, implementação e revisão de código.
+2. Tray — Plataforma de E-commerce — Full Stack Developer (Pleno) — 10/2021 – 11/2024 — PHP, Laravel, JavaScript, Vue.js, New Relic
+   - Projetei um serviço de geolocalização no back-end, em PHP, para o cálculo e o roteamento de fretes do Multi-CD.
+   - Desenvolvi um motor de ACL para clientes Enterprise e Top Sellers, com controle de acesso por IP, horário e perfil.
+   - Conduzi a migração de fluxos do Backoffice, escritos em PHP legado, com Strangler Fig, de PHP 5 para PHP 8, para Laravel e Vue.js.
+   - Liderei o desenho técnico de um fluxo de configuração guiada para a ativação de clientes.
 3. Desk360 (Startup do Grupo Locaweb) — Full Stack Developer (Júnior) — 09/2018 – 09/2021 — PHP, Laravel, Vue.js, MySQL, JavaScript, JSON:API
    - Participei da evolução da plataforma omnichannel desde a fase inicial até 400+ clientes reais.
    - Desenvolvi APIs REST em PHP e Laravel com JSON:API, incluindo relacionamentos de dados em MySQL.

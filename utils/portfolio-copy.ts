@@ -166,6 +166,7 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
       paragraphs: [
         'Desenvolvedor Backend/Full Stack com mais de 6 anos de experiência no desenvolvimento e evolução de aplicações web, com foco em PHP, Laravel, JavaScript, Vue.js e MySQL.',
         'Atuação em plataformas de e-commerce, pagamentos e produtos digitais, incluindo modernização de sistemas legados, otimização de consultas, mensageria, controle de acesso e segurança de aplicações.',
+        'Experiência na evolução de sistemas legados de alta criticidade, de bases PHP para Laravel e Vue.js. Experiência na Tray, do grupo LWSA, e na Desk360, startup do grupo Locaweb.',
         'Experiência no desenvolvimento de APIs, na integração de funcionalidades e no uso de IA no dia a dia: prompts, MCP e skills para análise, implementação e revisão de código.',
         'Perfil orientado à resolução de problemas técnicos e à evolução de sistemas existentes, buscando aliar qualidade de código, confiabilidade e necessidades do negócio.',
       ],
@@ -181,14 +182,14 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
         {
           ...sharedJobs.greenn,
           domain: 'Ecossistema de vendas digitais',
-          challenge: 'Assumi a evolução de componentes críticos do ecossistema financeiro e educacional, em filas, ERP, conciliação bancária, saques e segurança. Eliminei o requeue histórico de mais de 12 mil mensagens retidas, otimizei consultas legadas com cursores e paginação incremental e integrei o Panda IA ao fluxo de cursos, no processamento de legendas e na orquestração dos assistentes. No Cursor, skills e commands MCP entraram na análise, na implementação e na revisão.',
+          challenge: 'Assumi a evolução de componentes críticos do ecossistema financeiro e educacional, em filas, ERP, conciliação bancária, saques e segurança. Eliminei o requeue de mais de 12 mil mensagens retidas em filas críticas do RabbitMQ, com micro-jobs, e acompanhei filas e APIs com Datadog. Otimizei consultas do ERP com cursores e paginação incremental e integrei o Tutor IA, que utilizava o motor do Panda, ao fluxo de cursos, no processamento de legendas e na orquestração dos assistentes. No Cursor, skills e commands MCP entraram na análise, na implementação e na revisão.',
           siteLabel: 'Site da Greenn',
           shotAlt: 'Página inicial da Greenn',
           role: 'Desenvolvedor Back-end (autônomo)',
           period: 'fev. 2025 — set. 2026',
           linkedinLabel: 'LinkedIn da Greenn',
           impacts: [
-            { value: '12 mil+', label: 'mensagens retidas' },
+            { value: '12 mil+', label: 'requeue no RabbitMQ' },
             { value: 'Tutor IA', label: 'legendas e assistentes' },
             { value: 'ERP', label: 'cursores e paginação' },
             { value: 'Segurança', label: 'OWASP, 2FA e ACL' },
@@ -199,7 +200,7 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
         {
           ...sharedJobs.tray,
           domain: 'Plataforma de e-commerce',
-          challenge: 'Atuei na evolução da plataforma de e-commerce e assumi a logística Multi-CD, o acesso de Enterprise e Top Sellers e a modernização do backoffice. Desenvolvi o roteamento e o cálculo de frete entre centros de distribuição, o ACL por IP, horário e perfil, a migração de fluxos de PHP para Laravel e Vue.js e, com UX, o fluxo guiado da configuração inicial.',
+          challenge: 'Atuei na evolução da plataforma de e-commerce, do grupo LWSA, e assumi a logística Multi-CD, o acesso de Enterprise e Top Sellers e a modernização do backoffice. Desenvolvi o roteamento e o cálculo de frete entre centros de distribuição, o ACL por IP, horário e perfil, a migração de fluxos com Strangler Fig, de PHP 5 para PHP 8, para Laravel e Vue.js e, com UX, o fluxo guiado da configuração inicial. Na investigação de produção, usei o New Relic na observabilidade.',
           siteLabel: 'Site da Tray',
           shotAlt: 'Página inicial da Tray',
           role: 'Desenvolvedor Full Stack pleno',
@@ -208,7 +209,8 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
           impacts: [
             { value: 'Multi-CD', label: 'roteamento e frete' },
             { value: 'ACL', label: 'IP, horário e perfil' },
-            { value: 'Laravel', label: 'fluxos e Vue.js' },
+            { value: 'Strangler Fig', label: 'PHP 5 para PHP 8' },
+            { value: 'New Relic', label: 'observabilidade' },
             { value: 'Onboarding', label: 'ativação com UX' },
           ],
         },
@@ -347,7 +349,7 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
         {
           ...sharedJobs.greenn,
           domain: 'Digital sales ecosystem',
-          challenge: 'I took on critical parts of the financial and education ecosystem: queues, the ERP, bank reconciliation, withdrawals, and security. I cleared the historical requeue of more than 12 thousand held messages, optimized legacy queries with cursors and incremental pagination, and integrated Panda AI into the course flow, for caption processing and assistant orchestration. In Cursor, skills and MCP commands became part of analysis, implementation, and review.',
+          challenge: 'I took on critical parts of the financial and education ecosystem: queues, the ERP, bank reconciliation, withdrawals, and security. I cleared the historical requeue of more than 12 thousand held messages, optimized legacy queries with cursors and incremental pagination, and integrated Tutor AI, which used the Panda engine, into the course flow, for caption processing and assistant orchestration. In Cursor, skills and MCP commands became part of analysis, implementation, and review.',
           siteLabel: 'Greenn website',
           shotAlt: 'Greenn homepage',
           role: 'Back-end Developer',
@@ -355,7 +357,7 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
           linkedinLabel: 'Greenn on LinkedIn',
           impacts: [
             { value: '12k+', label: 'held messages' },
-            { value: 'AI tutor', label: 'captions and assistants' },
+            { value: 'Tutor AI', label: 'captions and assistants' },
             { value: 'ERP', label: 'cursors and pagination' },
             { value: 'Security', label: 'OWASP, 2FA, and ACL' },
             { value: 'Withdrawals', label: 'GMV, chargeback, and retention' },
@@ -513,7 +515,7 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
         {
           ...sharedJobs.greenn,
           domain: 'Ecosistema de ventas digitales',
-          challenge: 'Asumí la evolución de componentes críticos del ecosistema financiero y educativo, en colas, ERP, conciliación bancaria, retiros y seguridad. Eliminé el requeue histórico de más de 12 mil mensajes retenidos, optimicé consultas legadas con cursores y paginación incremental e integré Panda IA al flujo de cursos, en el procesamiento de subtítulos y en la orquestación de los asistentes. En Cursor, skills y commands MCP entraron en el análisis, la implementación y la revisión.',
+          challenge: 'Asumí la evolución de componentes críticos del ecosistema financiero y educativo, en colas, ERP, conciliación bancaria, retiros y seguridad. Eliminé el requeue histórico de más de 12 mil mensajes retenidos, optimicé consultas legadas con cursores y paginación incremental e integré el Tutor IA, que utilizaba el motor de Panda, al flujo de cursos, en el procesamiento de subtítulos y en la orquestación de los asistentes. En Cursor, skills y commands MCP entraron en el análisis, la implementación y la revisión.',
           siteLabel: 'Sitio de Greenn',
           shotAlt: 'Página de inicio de Greenn',
           role: 'Desarrollador Back-end',
