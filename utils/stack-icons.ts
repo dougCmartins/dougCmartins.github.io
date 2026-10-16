@@ -20,9 +20,7 @@ const stackIconEntries: Record<string, { path: string, color: string }> = {
 
 export const stackIcons: Record<string, { path: string, color: string }> = {
   ...stackIconEntries,
-  "Vue 3": stackIconEntries["Vue.js"],
   "Nuxt": stackIconEntries["Nuxt.js"],
   "Angular": stackIconEntries["Angular 4"],
-  "AI": stackIconEntries["IA generativa"],
-  "AI generative": stackIconEntries["IA generativa"],
+  "CSS3": stackIconEntries["CSS"],
 }
