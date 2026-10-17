@@ -18,7 +18,7 @@ A home (`pages/index.vue`) monta, por esta ordem:
 
 Um canvas de partículas cobre a viewport inteira, atrás do conteúdo. Com `prefers-reduced-motion`, o canvas não é criado.
 
-O botão Baixar CV serve o PDF original em `/cv/Douglas_da_Cruz_Martins.pdf`. Esse arquivo não deve ser substituído.
+O botão Baixar CV serve o PDF em `/cv/Douglas_da_Cruz_Martins.pdf` (fonte editável em `cv/` e espelho em `public/cv/`).
 
 ## Estrutura
 
