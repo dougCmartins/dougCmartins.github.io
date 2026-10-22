@@ -2,10 +2,7 @@
   <div id="top" class="portfolio">
     <Header />
     <main>
-      <div class="hero-stage">
-        <img class="hero-background" src="/images/hero-bg.webp" alt="" fetchpriority="high">
-        <HeroPortfolio />
-      </div>
+      <HeroPortfolio />
       <PortfolioSections />
     </main>
   </div>

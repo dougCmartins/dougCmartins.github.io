@@ -20,6 +20,12 @@ Um canvas de partículas cobre a viewport inteira, atrás do conteúdo. Com `pre
 
 O botão Baixar CV serve o PDF em `/cv/Douglas_da_Cruz_Martins.pdf` (fonte editável em `cv/` e espelho em `public/cv/`).
 
+## Como foi feito
+
+O layout parte do [template de portfólio no Figma](https://www.figma.com/design/EHywifx2xdSK6xgwvyNylh/%F0%9F%8E%A8-Personal-Portfolio-Template--Community---c%C3%B3pia-?node-id=216-6&p=f&t=UqnDuC6dEw1qGTra-0). `design-system/portfolio/` guarda a base aplicada: tokens, componentes e a galeria. As fontes são Raleway e IBM Plex Mono. O botão primário é o verde `#3f8e00`; o de destaque é o laranja `#ffa217`.
+
+A galeria abre direto no navegador em `design-system/portfolio/index.html` e continua com o exemplo genérico do template. O Nuxt não importa esse HTML. A página publicada é a implementação: uma rota, textos em `utils/portfolio-copy.ts` e fatos em `utils/portfolio.ts`. O currículo real é Greenn, Tray, Desk360 e Cuca Fresca Informática. Projetos aponta para o GitHub.
+
 ## Estrutura
 
 ```text
@@ -32,7 +38,8 @@ components/ParticleBackground.client.vue
 composables/usePortfolioLocale.ts
 utils/portfolio-copy.ts         textos em PT-BR, EN e ES
 utils/portfolio.ts              contato, stacks e links
-assets/css/main.css             tokens e estilos globais
+assets/css/main.css             estilos da página publicada
+design-system/portfolio/        base visual: tokens, componentes e galeria
 public/                         imagens, favicon, partículas e o PDF do CV
 nuxt.config.ts                  head, SEO e Nitro
 ```

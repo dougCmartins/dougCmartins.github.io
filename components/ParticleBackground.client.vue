@@ -41,10 +41,30 @@ function loadParticles() {
 }
 
 let teardown = () => {}
+let cancelIdle = () => {}
 let disposed = false
 let motionQuery: MediaQueryList | undefined
 let mobileQuery: MediaQueryList | undefined
 let onQueryChange: (() => void) | undefined
+let onVisibility: (() => void) | undefined
+
+function scheduleStart() {
+  cancelIdle()
+  const run = () => {
+    cancelIdle = () => {}
+    if (!motionQuery || !mobileQuery || disposed || document.hidden || motionQuery.matches) {
+      return
+    }
+    void start(motionQuery, mobileQuery)
+  }
+  if (typeof requestIdleCallback === 'function') {
+    const id = requestIdleCallback(run, { timeout: 2000 })
+    cancelIdle = () => cancelIdleCallback(id)
+    return
+  }
+  const id = window.setTimeout(run, 200)
+  cancelIdle = () => window.clearTimeout(id)
+}
 
 async function start(motion: MediaQueryList, mobile: MediaQueryList) {
   teardown()
@@ -58,7 +78,7 @@ async function start(motion: MediaQueryList, mobile: MediaQueryList) {
     return
   }
   const particleWindow = window as ParticleWindow
-  if (disposed || motion.matches || !particleWindow.particlesJS) {
+  if (disposed || motion.matches || document.hidden || !particleWindow.particlesJS) {
     return
   }
   const container = document.getElementById('portfolio-particles')
@@ -77,17 +97,17 @@ async function start(motion: MediaQueryList, mobile: MediaQueryList) {
   try {
     particleWindow.particlesJS('portfolio-particles', {
       particles: {
-        number: { value: mobile.matches ? 28 : 80, density: { enable: true, value_area: 800 } },
+        number: { value: mobile.matches ? 12 : 32, density: { enable: true, value_area: 1400 } },
         color: { value: colors.getPropertyValue('--particle-dot').trim() },
         shape: { type: 'circle' },
-        opacity: { value: 0.5, random: false },
-        size: { value: mobile.matches ? 2 : 3, random: true },
+        opacity: { value: 0.35, random: false },
+        size: { value: mobile.matches ? 2 : 2.5, random: true },
         line_linked: {
           enable: true,
-          distance: 180,
+          distance: 110,
           color: colors.getPropertyValue('--particle-line').trim(),
-          opacity: 0.4,
-          width: 1.5,
+          opacity: 0.22,
+          width: 1,
         },
         move: {
           enable: true,
@@ -135,24 +155,39 @@ onMounted(() => {
   motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
   mobileQuery = window.matchMedia('(max-width: 639px)')
   onQueryChange = () => {
-    if (!motionQuery || !mobileQuery) {
+    if (!motionQuery || !mobileQuery || document.hidden) {
       return
     }
     void start(motionQuery, mobileQuery)
   }
-  void start(motionQuery, mobileQuery)
+  onVisibility = () => {
+    if (!motionQuery || !mobileQuery) {
+      return
+    }
+    if (document.hidden || motionQuery.matches) {
+      teardown()
+      return
+    }
+    void start(motionQuery, mobileQuery)
+  }
+  scheduleStart()
   motionQuery.addEventListener('change', onQueryChange)
   mobileQuery.addEventListener('change', onQueryChange)
+  document.addEventListener('visibilitychange', onVisibility)
 })
 
 onBeforeUnmount(() => {
   disposed = true
+  cancelIdle()
   teardown()
   if (motionQuery && onQueryChange) {
     motionQuery.removeEventListener('change', onQueryChange)
   }
   if (mobileQuery && onQueryChange) {
     mobileQuery.removeEventListener('change', onQueryChange)
+  }
+  if (onVisibility) {
+    document.removeEventListener('visibilitychange', onVisibility)
   }
 })
 </script>
@@ -161,6 +196,7 @@ onBeforeUnmount(() => {
 .particle-background {
   position: fixed;
   inset: 0;
+  z-index: 0;
   pointer-events: none;
 }
 

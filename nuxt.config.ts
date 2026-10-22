@@ -9,6 +9,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       siteUrl,
+      rumEndpoint: process.env.NUXT_PUBLIC_RUM_ENDPOINT || '',
     },
   },
   typescript: {
@@ -45,14 +46,9 @@ export default defineNuxtConfig({
         { rel: 'icon', href: '/favicon.png' },
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
-        { rel: 'preconnect', href: 'https://api.fontshare.com' },
         {
           rel: 'stylesheet',
-          href: 'https://api.fontshare.com/v2/css?f[]=clash-display@400&display=swap',
-        },
-        {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap',
+          href: 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Raleway:wght@700;800&display=swap',
         },
       ],
       style: [
@@ -60,21 +56,18 @@ export default defineNuxtConfig({
           children: `
            html{scroll-behavior:smooth;}
             body {
-              font-family: 'DM Sans', sans-serif;
+              font-family: 'IBM Plex Mono', ui-monospace, monospace;
               margin: 0 !important;
               box-sizing: border-box !important;
-              background: #0e0f0f;
+              background: #080808;
               color: #ffffff;
-            }
-            h1,h2,h3,h4 {
-              color: var(--h-color);
             }`
         },
       ],
     },
   },
   compatibilityDate: '2025-02-03',
-  modules: ['@nuxt/ui', '@nuxt/image', '@vueuse/motion/nuxt'],
+  modules: ['@nuxt/image'],
   image: {
     screens: {
       xs: 320,

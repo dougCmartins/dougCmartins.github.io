@@ -1,3 +1,8 @@
+export const cvFile = {
+  href: '/cv/Douglas_da_Cruz_Martins.pdf',
+  downloadName: 'Douglas_da_Cruz_Martins.pdf',
+} as const
+
 export const contact = {
   email: 'martinsdouglas087@gmail.com',
   github: 'https://github.com/dougCmartins',
@@ -50,3 +55,38 @@ export const experienceMedia = {
     shot: '/images/experience/cuca-fresca-home.png',
   },
 } as const
+
+export const testimonials = [
+  {
+    id: 'nana',
+    name: 'Nanachara Vicente da Silva',
+    role: 'Squad Leader',
+    quote: 'Douglas tem um olhar crítico com relação ao código gerado. Das poucas pessoas que naturalmente levam em conta a segurança da informação. um profissional ético e muito alinhado com as necessidades da empresa e do cliente final',
+    photo: '/images/depoimentos/nana.jpg',
+    monogram: null,
+  },
+  {
+    id: 'samuel',
+    name: 'Samuel Pereira',
+    role: 'Tech Lead',
+    quote: 'Tive o privilégio de trabalhar em 2026 com o Douglas na Greenn. Ele sempre buscou agregar ao time tecnicamente e não disseminação de conhecimento. Buscou sempre fazer entregas com ótima qualidade e senso crítico, não limitando-se somente ao básico. Recomendo fortemente o Douglas como um profissional altamente competente, compromissado e com alto senso crítico e coletivo.',
+    photo: '/images/depoimentos/samuel.jpg',
+    monogram: null,
+  },
+  {
+    id: 'rayanne',
+    name: 'Rayanne Bertolace Lima',
+    role: 'Front-End Lead',
+    quote: 'Trabalhei no mesmo time de Experience da Greenn com o Douglas nos últimos 3 meses e desde o início da minha trajetória na empresa sempre foi muito solícito, me dando ótimas dicas, demonstrando grande domínio em habilidades técnicas e soft skills. Tem o perfil de um profissional sempre preocupado com qualidade, agilidade e crescimento em equipe. Uma pessoa de fácil convivência, que levanta pontos pertinentes nas tarefas e se dedica em cada entrega. Tenho certeza que agrega muito por onde passar.',
+    photo: '/images/depoimentos/rayanne.jpg',
+    monogram: null,
+  },
+  {
+    id: 'hiury',
+    name: 'Hiury Joaquim Oliveira André Araújo',
+    role: 'Líder Técnico',
+    quote: 'Gostaria de expressar minha sincera recomendação para Douglas Martins, com quem tive o prazer de trabalhar por mais de dois anos no Backoffice da Tray. Douglas é um profissional excepcionalmente competente e habilidoso, cujas contribuições foram fundamentais para o sucesso de nossa equipe. Sua dedicação, expertise técnica e capacidade de resolver problemas com eficiência fizeram dele uma peça-chave em nossos projetos. Tenho total confiança em seu potencial e sei que ele continuará a agregar valor em qualquer desafio que enfrentar.',
+    photo: '/images/depoimentos/yuri_tray.jpg',
+    monogram: null,
+  },
+] as const
