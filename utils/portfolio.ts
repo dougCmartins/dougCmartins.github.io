@@ -16,7 +16,7 @@ export const currentStack = ['PHP', 'Laravel', 'Vue.js', 'MySQL', 'RabbitMQ', 'N
 export const stackGroupItems = [
   ['PHP', 'Laravel', 'JavaScript', 'Vue.js', 'Nuxt.js', 'Angular', 'Node.js', 'HTML5', 'CSS3', 'Tailwind', 'Bootstrap'],
   ['MySQL', 'PostgreSQL', 'RabbitMQ', 'Docker', 'Git'],
-  ['Pest', 'DDD', 'Clean Code', 'Strangler Fig', 'Datadog', 'New Relic', 'OWASP', '2FA', 'ACL', 'Scrum', 'Kanban', 'Cursor'],
+  ['Pest', 'DDD', 'Clean Code', 'New Relic', 'Datadog', 'Datadog RUM', 'Datadog APM', 'SSR', 'CWV (Core Web Vitals)', 'OWASP', '2FA', 'ACL', 'Scrum', 'Kanban', 'Sprint', 'Git Flow', 'CI/CD', 'Cursor'],
 ] as const
 
 export const experienceStacks = {

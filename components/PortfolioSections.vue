@@ -185,11 +185,20 @@ function toggleJob(id: string) {
 }
 
 const stackGroups = computed(() => copy.value.stack.groups.map((name, index) => {
-  const items = stackGroupItems[index] ?? []
+  const items = [...(stackGroupItems[index] ?? [])]
   const isPractices = index === stackGroupItems.length - 1
+  if (!isPractices) {
+    return { name, items }
+  }
+
+  const observabilityAt = items.indexOf('New Relic')
+  if (observabilityAt >= 0) {
+    items.splice(observabilityAt, 0, copy.value.stack.observability)
+  }
+
   return {
     name,
-    items: isPractices ? [...items, ...copy.value.stack.aiTools] : items,
+    items: [...items, ...copy.value.stack.aiTools],
   }
 }))
 </script>

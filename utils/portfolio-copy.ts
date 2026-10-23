@@ -104,6 +104,7 @@ export type PortfolioCopy = {
     title: string
     intro: readonly string[]
     groups: readonly string[]
+    observability: string
     aiTools: readonly string[]
   }
   education: {
@@ -326,6 +327,7 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
       title: 'As ferramentas certas para o trabalho.',
       intro: ['Uma base full stack.', 'Sempre aprendendo, sempre refinando.'],
       groups: ['Linguagens e frameworks', 'Dados e infraestrutura', 'Práticas e ferramentas'],
+      observability: 'Observabilidade',
       aiTools: ['IA generativa', 'Engenharia de prompts'],
     },
     education: {
@@ -551,6 +553,7 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
       title: 'The right tools for the job.',
       intro: ['A full-stack foundation.', 'Always learning, always refining.'],
       groups: ['Languages & frameworks', 'Data & infrastructure', 'Practices & tools'],
+      observability: 'Observability',
       aiTools: ['Generative AI', 'Prompt engineering'],
     },
     education: {
@@ -776,6 +779,7 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
       title: 'Las herramientas adecuadas para el trabajo.',
       intro: ['Una base full stack.', 'Siempre aprendiendo, siempre refinando.'],
       groups: ['Lenguajes y frameworks', 'Datos e infraestructura', 'Prácticas y herramientas'],
+      observability: 'Observabilidad',
       aiTools: ['IA generativa', 'Ingeniería de prompts'],
     },
     education: {
