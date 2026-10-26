@@ -30,14 +30,25 @@
           </a>
         </div>
       </div>
-      <img
-        class="portrait"
-        src="/images/douglas-c-martins.jpg"
-        width="320"
-        height="320"
-        fetchpriority="high"
-        :alt="copy.hero.portraitAlt"
-      >
+      <picture class="portrait">
+        <source
+          media="(max-width: 700px)"
+          type="image/avif"
+          srcset="/images/douglas-c-martins-640.avif"
+        >
+        <source
+          media="(max-width: 700px)"
+          type="image/webp"
+          srcset="/images/douglas-c-martins-640.webp"
+        >
+        <img
+          src="/images/douglas-c-martins.jpg"
+          width="320"
+          height="320"
+          fetchpriority="high"
+          :alt="copy.hero.portraitAlt"
+        >
+      </picture>
     </div>
   </section>
 </template>
@@ -104,11 +115,16 @@ const heroStack = computed(() => [...currentStack, ...copy.value.stack.aiTools])
 .portrait {
   width: 320px;
   height: 320px;
+  justify-self: end;
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
   object-fit: cover;
   object-position: center 18%;
   border: 1px solid var(--color-border);
-  justify-self: end;
 }
 
 @media (max-width: 700px) {

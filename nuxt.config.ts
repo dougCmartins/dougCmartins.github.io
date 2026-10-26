@@ -44,11 +44,19 @@ export default defineNuxtConfig({
       link: [
         { rel: 'canonical', href: siteUrl },
         { rel: 'icon', href: '/favicon.png' },
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         {
-          rel: 'stylesheet',
-          href: 'https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Raleway:wght@700;800&display=swap',
+          rel: 'preload',
+          href: '/fonts/ibm-plex-mono-latin-400.woff2',
+          as: 'font',
+          type: 'font/woff2',
+          crossorigin: '',
+        },
+        {
+          rel: 'preload',
+          href: '/fonts/raleway-latin-800.woff2',
+          as: 'font',
+          type: 'font/woff2',
+          crossorigin: '',
         },
       ],
       style: [
@@ -56,7 +64,7 @@ export default defineNuxtConfig({
           children: `
            html{scroll-behavior:smooth;}
             body {
-              font-family: 'IBM Plex Mono', ui-monospace, monospace;
+              font-family: IBMPlexMono, ui-monospace, monospace;
               margin: 0 !important;
               box-sizing: border-box !important;
               background: #080808;
