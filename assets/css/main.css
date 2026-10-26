@@ -943,7 +943,7 @@ button:focus-visible {
   display: grid;
   grid-template-columns: 20px minmax(0, 1fr);
   gap: 12px;
-  animation: reveal-up linear both;
+  animation: rise-in linear both;
   animation-timeline: view();
   animation-range: entry 0% cover 20%;
 }
