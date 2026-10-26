@@ -14,7 +14,7 @@ A página abre em português do Brasil. O seletor de idioma no header troca PT-B
 4. **Experiência** — cards de Greenn, Tray, Desk360 e Cuca Fresca Informática com print, período, cargo, desafio, stack e métricas. "Ler mais" abre a página do case.
 5. **Depoimentos**, **Stack**, **Formação** e **Contato**.
 
-**Case de experiência** (`pages/experience/[id].vue`, ex.: `/experience/greenn`) — período, empresa, cargo, desafio, stack, print, resultados em cards numerados, links para o site e o LinkedIn da empresa e o próximo case. As quatro páginas são pré-renderizadas.
+**Case de experiência** (`pages/experience/[id].vue`, ex.: `/experience/greenn`) — período, empresa, cargo, desafio, stack, caixa com as métricas, resultados em lista (no formato do `/work/:slug` do Lovable), print, links para o site e o LinkedIn da empresa e o próximo case. As quatro páginas são pré-renderizadas.
 
 A navegação entre páginas usa a transição do Nuxt (`pageTransition`). Um canvas de partículas (particles.js, `public/vendor/particles.min.js`) cobre a viewport atrás do conteúdo e não é criado com `prefers-reduced-motion`.
 

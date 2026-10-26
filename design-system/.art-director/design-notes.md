@@ -21,7 +21,7 @@ Direção visual do portfólio desde out. 2026. Factos de design, não instruç�
 1. Hero: rótulo de disponibilidade, nome, cargo com cursor, local, resumo, tags de stack, botões. Retrato circular com anel tracejado.
 2. Sobre: título à esquerda, texto e focos à direita.
 3. Experiência: grelha 2×2 de cards (print, período, cargo, desafio, stack, métricas, "Ler mais"). Cada card abre `/experience/[id]`.
-4. Página do case: voltar, período, empresa, cargo, desafio, stack, print grande, resultados em cards numerados, botões de site e LinkedIn, link para o próximo case.
+4. Página do case (formato do `/work/:slug` do Lovable): voltar, período, empresa, cargo, desafio em destaque, stack, caixa verde com as métricas, `// Resultados` em lista com setas (título, métrica, texto), print da empresa, botões de site e LinkedIn, link para o próximo case.
 5. Depoimentos, ferramentas (linhas rótulo + tags), formação (2 cards), contacto centrado.
 
 ## Movimento
