@@ -355,6 +355,16 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
           lines: ['Machine Learning, LLMs, IA Generativa e Agentes', 'DIO · 2026'],
         },
         {
+          id: 'prompt-engineering',
+          title: 'Engenharia de Prompt',
+          lines: ['IA Prompting, Desenvolvimento de IA generativa e mais 2 competências', 'Alura · out. 2026'],
+        },
+        {
+          id: 'software-architecture',
+          title: 'Fundamentos da Arquitetura de Software Moderna',
+          lines: ['Alura · out. 2026'],
+        },
+        {
           id: 'english',
           title: 'Inglês',
           lines: ['Proficiência intermediária'],
@@ -581,6 +591,16 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
           lines: ['Machine Learning, LLMs, Generative AI & Agents', 'DIO · 2026'],
         },
         {
+          id: 'prompt-engineering',
+          title: 'Prompt Engineering',
+          lines: ['AI prompting, generative AI development, and 2 more skills', 'Alura · Oct 2026'],
+        },
+        {
+          id: 'software-architecture',
+          title: 'Modern Software Architecture Fundamentals',
+          lines: ['Alura · Oct 2026'],
+        },
+        {
           id: 'english',
           title: 'English',
           lines: ['Intermediate proficiency'],
@@ -805,6 +825,16 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
           id: 'modern-ai',
           title: 'Fundamentos de la IA Moderna',
           lines: ['Machine Learning, LLMs, IA Generativa y Agentes', 'DIO · 2026'],
+        },
+        {
+          id: 'prompt-engineering',
+          title: 'Ingeniería de Prompts',
+          lines: ['IA Prompting, desarrollo de IA generativa y 2 competencias más', 'Alura · oct. 2026'],
+        },
+        {
+          id: 'software-architecture',
+          title: 'Fundamentos de la Arquitectura de Software Moderna',
+          lines: ['Alura · oct. 2026'],
         },
         {
           id: 'english',
