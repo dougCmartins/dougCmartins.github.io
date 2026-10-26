@@ -1,0 +1,6 @@
+/* Gallery only: main.css loads fonts from /fonts, which does not resolve over file://. */
+@font-face { font-family: IBMPlexMono; font-weight: 400; font-display: swap; src: url("../../../public/fonts/ibm-plex-mono-latin-400.woff2") format("woff2"); }
+@font-face { font-family: IBMPlexMono; font-weight: 600; font-display: swap; src: url("../../../public/fonts/ibm-plex-mono-latin-600.woff2") format("woff2"); }
+@font-face { font-family: IBMPlexMono; font-weight: 700; font-display: swap; src: url("../../../public/fonts/ibm-plex-mono-latin-700.woff2") format("woff2"); }
+@font-face { font-family: "Raleway"; font-weight: 700; font-display: swap; src: url("../../../public/fonts/raleway-latin-700.woff2") format("woff2"); }
+@font-face { font-family: "Raleway"; font-weight: 800; font-display: swap; src: url("../../../public/fonts/raleway-latin-800.woff2") format("woff2"); }

@@ -1,10 +1,7 @@
 <template>
-  <div id="top" class="portfolio">
-    <Header />
-    <main>
-      <HeroPortfolio />
-      <PortfolioSections />
-    </main>
+  <div>
+    <HeroPortfolio />
+    <PortfolioSections />
   </div>
 </template>
 

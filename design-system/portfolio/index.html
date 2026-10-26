@@ -1,307 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Portfolio design system</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Raleway:wght@400;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/tokens.css">
-    <link rel="stylesheet" href="css/components.css">
+    <title>DCMARTINS.CO — Design system</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/gallery.css">
   </head>
   <body>
     <main class="gallery">
-      <header class="gallery__header">
-        <p class="gallery__kicker">Personal portfolio template</p>
-        <h1 class="gallery__title">Design system</h1>
+      <header class="gallery__header bg-grid surface">
+        <p class="code-label"><span class="code-label__mark">/*</span> DCMARTINS.CO <span class="code-label__mark">*/</span></p>
+        <h1 class="gallery__title">Design system<span class="typing-cursor" aria-hidden="true"></span></h1>
+        <p class="lede">Espécimes da página publicada. Todos os estilos vêm de <code>assets/css/main.css</code>: esta galeria não tem uma segunda camada de tokens.</p>
       </header>
 
-      <section class="specimen" id="states" aria-labelledby="states-label">
-        <h2 class="specimen__label" id="states-label">States</h2>
-        <div class="stack">
-          <div class="surface surface--light">
-            <div class="state-grid">
-              <div class="state">
-                <p class="state__name">Rest</p>
-                <a class="button button--accent" href="#case-study">View case study <img src="assets/icon-arrow.svg" alt=""></a>
-              </div>
-              <div class="state">
-                <p class="state__name">Raised</p>
-                <a class="button button--accent is-raised" href="#case-study">View case study <img src="assets/icon-arrow.svg" alt=""></a>
-              </div>
-              <div class="state">
-                <p class="state__name">Rest</p>
-                <a class="button button--primary" href="#work">Know more <img src="assets/icon-arrow.svg" alt=""></a>
-              </div>
-              <div class="state">
-                <p class="state__name">Raised</p>
-                <a class="button button--primary is-raised" href="#work">Know more <img src="assets/icon-arrow.svg" alt=""></a>
-              </div>
-              <div class="state">
-                <p class="state__name">Pressed</p>
-                <a class="button button--primary is-pressed" href="#work">Know more <img src="assets/icon-arrow.svg" alt=""></a>
-              </div>
-              <div class="state">
-                <p class="state__name">Focus</p>
-                <a class="button button--primary is-focused" href="#work">Know more <img src="assets/icon-arrow.svg" alt=""></a>
-              </div>
-            </div>
-          </div>
-          <div class="surface surface--dark">
-            <div class="state-grid">
-              <div class="state">
-                <p class="state__name">Rest</p>
-                <a class="button button--primary button--lg" href="#contact">Let’s get started <img src="assets/icon-arrow.svg" alt=""></a>
-              </div>
-              <div class="state">
-                <p class="state__name">Raised</p>
-                <a class="button button--primary button--lg is-raised" href="#contact">Let’s get started <img src="assets/icon-arrow.svg" alt=""></a>
-              </div>
-              <div class="state">
-                <p class="state__name">Rest</p>
-                <div class="logo-chip">
-                  <img class="logo-chip__muted" src="assets/logo-elastic.svg" alt="Elastic">
-                </div>
-              </div>
-              <div class="state">
-                <p class="state__name">Raised</p>
-                <div class="logo-chip is-raised">
-                  <img class="logo-chip__muted" src="assets/logo-elastic.svg" alt="Elastic">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="surface surface--light">
-            <div class="state-grid">
-              <div class="state">
-                <p class="state__name">Rest</p>
-                <div class="media media--case">
-                  <img src="assets/case-study-1.png" alt="">
-                </div>
-              </div>
-              <div class="state">
-                <p class="state__name">Raised</p>
-                <div class="media media--case is-raised">
-                  <img src="assets/case-study-1.png" alt="">
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="surface surface--dark surface--quote">
-            <div class="state-grid">
-              <div class="state">
-                <p class="state__name">Rest</p>
-                <article class="testimonial">
-                  <p class="quote testimonial__quote" aria-hidden="true">“</p>
-                  <p class="body testimonial__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <footer class="testimonial__footer">
-                    <span class="avatar">
-                      <img src="assets/client-1.png" alt="">
-                    </span>
-                    <p class="client-name">Client Name</p>
-                  </footer>
-                </article>
-              </div>
-              <div class="state">
-                <p class="state__name">Raised</p>
-                <article class="testimonial is-raised">
-                  <p class="quote testimonial__quote" aria-hidden="true">“</p>
-                  <p class="body testimonial__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                  <footer class="testimonial__footer">
-                    <span class="avatar">
-                      <img src="assets/client-1.png" alt="">
-                    </span>
-                    <p class="client-name">Client Name</p>
-                  </footer>
-                </article>
-              </div>
-            </div>
-          </div>
+      <section class="specimen" aria-labelledby="color-title">
+        <p class="code-divider"><span class="text-primary">//</span><span id="color-title">Cor</span><span class="code-divider__line"></span></p>
+        <div class="swatches">
+          <div class="swatch"><div class="swatch__color" style="background:#080808"></div><p class="swatch__meta"><span>canvas</span><span>#080808</span></p></div>
+          <div class="swatch"><div class="swatch__color" style="background:#111111"></div><p class="swatch__meta"><span>card</span><span>#111111</span></p></div>
+          <div class="swatch"><div class="swatch__color" style="background:#1b1b1b"></div><p class="swatch__meta"><span>chip</span><span>#1b1b1b</span></p></div>
+          <div class="swatch"><div class="swatch__color" style="background:#222222"></div><p class="swatch__meta"><span>line</span><span>#222222</span></p></div>
+          <div class="swatch"><div class="swatch__color" style="background:#484848"></div><p class="swatch__meta"><span>line-strong</span><span>#484848</span></p></div>
+          <div class="swatch"><div class="swatch__color" style="background:#9c9c9c"></div><p class="swatch__meta"><span>text-muted</span><span>#9c9c9c</span></p></div>
+          <div class="swatch"><div class="swatch__color" style="background:#c4c4c4"></div><p class="swatch__meta"><span>text-body</span><span>#c4c4c4</span></p></div>
+          <div class="swatch"><div class="swatch__color" style="background:#3f8e00"></div><p class="swatch__meta"><span>primary</span><span>#3f8e00</span></p></div>
+          <div class="swatch"><div class="swatch__color" style="background:#347800"></div><p class="swatch__meta"><span>primary-hover · botão</span><span>#347800</span></p></div>
+          <div class="swatch"><div class="swatch__color" style="background:#62ba1b"></div><p class="swatch__meta"><span>primary-text</span><span>#62ba1b</span></p></div>
+          <div class="swatch"><div class="swatch__color" style="background:#ffa217"></div><p class="swatch__meta"><span>accent</span><span>#ffa217</span></p></div>
         </div>
       </section>
 
-      <section class="specimen" id="type" aria-labelledby="type-label">
-        <h2 class="specimen__label" id="type-label">Type</h2>
-        <div class="stack">
-          <div class="surface surface--dark">
-            <div class="hero-copy">
-              <h3 class="display">Your Name Here</h3>
-              <p class="body">Intro text: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-          </div>
-          <div class="surface surface--light">
-            <div class="section-heading">
-              <h3 class="section-title">Case Studies</h3>
-              <p class="lede">Solving user &amp; business problems since last 15+ years. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-          </div>
-          <div class="surface surface--dark">
-            <div class="section-heading">
-              <h3 class="section-title section-title--inverse">Testimonials</h3>
-              <p class="lede">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-          </div>
+      <section class="specimen" aria-labelledby="type-title">
+        <p class="code-divider"><span class="text-primary">//</span><span id="type-title">Tipografia</span><span class="code-divider__line"></span></p>
+        <div class="type-scale">
+          <div class="type-scale__row"><span class="type-scale__name">Display · Raleway 800</span><span class="case-title">Douglas C Martins</span></div>
+          <div class="type-scale__row"><span class="type-scale__name">Section · Raleway 800</span><span class="section-title">Onde transformei desafios em resultados.</span></div>
+          <div class="type-scale__row"><span class="type-scale__name">Card · Raleway 700</span><span class="card-title">Greenn</span></div>
+          <div class="type-scale__row"><span class="type-scale__name">Body · system-ui 15/1.7</span><p class="body">Texto corrido usa a fonte do sistema: legível e sem download extra.</p></div>
+          <div class="type-scale__row"><span class="type-scale__name">Meta · IBM Plex Mono 12</span><span class="client-role">fev. 2025 — set. 2026</span></div>
         </div>
       </section>
 
-      <section class="specimen" id="buttons" aria-labelledby="buttons-label">
-        <h2 class="specimen__label" id="buttons-label">Buttons</h2>
-        <div class="stack">
-          <div class="surface surface--light">
-            <div class="cluster">
-              <a class="button button--accent" href="#case-study">View case study <img src="assets/icon-arrow.svg" alt=""></a>
-              <a class="button button--primary" href="#work">Know more <img src="assets/icon-arrow.svg" alt=""></a>
-            </div>
-          </div>
-          <div class="surface surface--dark">
-            <a class="button button--primary button--lg" href="#contact">Let’s get started <img src="assets/icon-arrow.svg" alt=""></a>
-          </div>
+      <section class="specimen" aria-labelledby="labels-title">
+        <p class="code-divider"><span class="text-primary">//</span><span id="labels-title">Rótulos e tags</span><span class="code-divider__line"></span></p>
+        <div class="row">
+          <p class="code-label"><span class="code-label__mark">/*</span> Disponível para freelance <span class="code-label__mark">*/</span></p>
+          <ul class="tech-row"><li class="tech-tag">PHP</li><li class="tech-tag">Laravel</li><li class="tech-tag">Vue.js</li></ul>
+          <ul class="tech-row"><li class="focus-tag">Performance</li><li class="focus-tag">Segurança</li></ul>
+          <a class="link-underline text-muted" href="#top">Link com sublinhado animado</a>
         </div>
       </section>
 
-      <section class="specimen" id="tag" aria-labelledby="tag-label">
-        <h2 class="specimen__label" id="tag-label">Tag</h2>
-        <div class="surface surface--light">
-          <span class="tag">Fintech</span>
+      <section class="specimen" aria-labelledby="buttons-title">
+        <p class="code-divider"><span class="text-primary">//</span><span id="buttons-title">Botões</span><span class="code-divider__line"></span></p>
+        <div class="row">
+          <a class="button button--primary button--lg" href="#top">Ver projetos <svg width="6" height="10" viewBox="0 0 5.89 10" aria-hidden="true"><path fill="currentColor" d="M5.63 4.37 1.51.26A.88.88 0 0 0 .26 1.51L3.75 5 .26 8.49a.88.88 0 0 0 1.25 1.25l4.12-4.12a.88.88 0 0 0 0-1.25Z"/></svg></a>
+          <a class="button button--primary" href="#top">Site da Greenn <svg width="6" height="10" viewBox="0 0 5.89 10" aria-hidden="true"><path fill="currentColor" d="M5.63 4.37 1.51.26A.88.88 0 0 0 .26 1.51L3.75 5 .26 8.49a.88.88 0 0 0 1.25 1.25l4.12-4.12a.88.88 0 0 0 0-1.25Z"/></svg></a>
+          <a class="button button--ghost" href="#top">Baixar CV <svg width="6" height="10" viewBox="0 0 5.89 10" aria-hidden="true"><path fill="currentColor" d="M5.63 4.37 1.51.26A.88.88 0 0 0 .26 1.51L3.75 5 .26 8.49a.88.88 0 0 0 1.25 1.25l4.12-4.12a.88.88 0 0 0 0-1.25Z"/></svg></a>
         </div>
       </section>
 
-      <section class="specimen" id="nav" aria-labelledby="nav-label">
-        <h2 class="specimen__label" id="nav-label">Navigation</h2>
-        <div class="surface surface--dark">
-          <div class="site-bar">
-            <nav class="nav" aria-label="Primary">
-              <a class="nav__link" href="#type">Home</a>
-              <a class="nav__link" href="#case-study">Case Studies</a>
-              <a class="nav__link" href="#testimonial">Testimonials</a>
-              <a class="nav__link" href="#work">Recent work</a>
-              <a class="nav__link" href="#contact">Get In Touch</a>
-            </nav>
-            <img src="assets/social-icons.svg" alt="Social media">
-          </div>
-        </div>
-      </section>
-
-      <section class="specimen" id="logos" aria-labelledby="logos-label">
-        <h2 class="specimen__label" id="logos-label">Logo chip</h2>
-        <div class="surface surface--dark">
-          <div class="logo-row">
-            <div class="logo-chip">
-              <img src="assets/logo-clickup.svg" alt="ClickUp">
-            </div>
-            <div class="logo-chip">
-              <span class="logo-dropbox" role="img" aria-label="Dropbox">
-                <img class="logo-dropbox__mark" src="assets/logo-dropbox-6.svg" alt="">
-                <img class="logo-dropbox__29" src="assets/logo-dropbox-29.svg" alt="">
-                <img class="logo-dropbox__27" src="assets/logo-dropbox-27.svg" alt="">
-                <img class="logo-dropbox__24" src="assets/logo-dropbox-24.svg" alt="">
-                <img class="logo-dropbox__21" src="assets/logo-dropbox-21.svg" alt="">
-                <img class="logo-dropbox__18" src="assets/logo-dropbox-18.svg" alt="">
-                <img class="logo-dropbox__15" src="assets/logo-dropbox-15.svg" alt="">
-                <img class="logo-dropbox__13" src="assets/logo-dropbox-13.svg" alt="">
-              </span>
-            </div>
-            <div class="logo-chip">
-              <img src="assets/logo-3.svg" alt="Client logo">
-            </div>
-            <div class="logo-chip">
-              <img class="logo-chip__muted" src="assets/logo-elastic.svg" alt="Elastic">
-            </div>
-            <div class="logo-chip">
-              <img src="assets/logo-5.svg" alt="Client logo">
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="specimen" id="case-study" aria-labelledby="case-study-label">
-        <h2 class="specimen__label" id="case-study-label">Case study</h2>
-        <div class="surface surface--light">
-          <article class="case-study">
-            <div class="case-study__copy">
-              <span class="tag">Fintech</span>
-              <h3 class="work-title">Work name here</h3>
-              <p class="body">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-              <a class="button button--accent" href="#case-study">View case study <img src="assets/icon-arrow.svg" alt=""></a>
-            </div>
-            <div class="media media--case">
-              <img src="assets/case-study-1.png" alt="">
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section class="specimen" id="work" aria-labelledby="work-label">
-        <h2 class="specimen__label" id="work-label">Work card</h2>
-        <div class="surface surface--light">
-          <div class="work-stage">
-            <button class="carousel-control" type="button" aria-label="Previous work">
-              <img src="assets/carousel-previous.svg" alt="">
-            </button>
-            <article class="work-card">
-              <div class="media media--work">
-                <img src="assets/work-1.png" alt="">
+      <section class="specimen" aria-labelledby="cards-title">
+        <p class="code-divider"><span class="text-primary">//</span><span id="cards-title">Cards</span><span class="code-divider__line"></span></p>
+        <div class="demo-grid">
+          <a class="experience-card hover-lift" href="#top">
+            <div class="experience-card__media"><img src="../../public/images/experience/greenn-sm.webp" width="640" height="311" alt="Página inicial da Greenn"></div>
+            <div class="experience-card__body">
+              <p class="experience-card__period">fev. 2025 — set. 2026</p>
+              <div class="experience-card__head"><h3 class="card-title">Greenn</h3><span class="experience-card__arrow" aria-hidden="true">→</span></div>
+              <p class="experience-card__role">Desenvolvedor Full Stack · Ecossistema de vendas digitais</p>
+              <p class="body">Card de experiência: abre a página do case. Foto, período, cargo, desafio, stack e métricas.</p>
+              <ul class="tech-row"><li class="tech-tag">PHP</li><li class="tech-tag">Laravel</li><li class="tech-tag">RabbitMQ</li></ul>
+              <div class="experience-card__footer">
+                <p class="experience-card__metrics"><span><strong>12 mil+</strong> mensagens</span></p>
+                <span class="experience-card__cta"><span class="text-muted">//</span> Ler mais</span>
               </div>
-              <h3 class="work-title">Work name here</h3>
-              <p class="body">Labore et dolore magna aliqua. sed do eiusmod tempor incididunt ut labore et dolore magna.</p>
-              <a class="button button--primary" href="#work">Know more <img src="assets/icon-arrow.svg" alt=""></a>
+            </div>
+          </a>
+          <div style="display:grid;gap:24px;align-content:start">
+            <div class="story card">
+              <span class="story__index" aria-hidden="true">01</span>
+              <p class="story__metric"><strong>30–60 s</strong><span class="story__unit">antes</span><span class="story__arrow">→</span><strong>2–3 s</strong><span class="story__unit">depois</span></p>
+              <h3 class="story__title">Card de resultado</h3>
+              <p class="body">Usado na página do case. Métrica em destaque, título e detalhe.</p>
+            </div>
+            <article class="testimonial card">
+              <p class="quote" aria-hidden="true">“</p>
+              <p class="body">Depoimento: aspas verdes, texto em corpo e rodapé com foto.</p>
+              <footer class="testimonial__footer">
+                <span class="avatar"><img src="../../public/images/depoimentos/samuel.jpg" width="48" height="48" alt=""></span>
+                <div><p class="client-name">Samuel Pereira</p><p class="client-role">Tech Lead</p></div>
+              </footer>
             </article>
-            <button class="carousel-control" type="button" aria-label="Next work">
-              <img src="assets/carousel-next.svg" alt="">
-            </button>
+            <a class="next-case hover-lift" href="#top">
+              <span class="next-case__label"><span class="text-primary">//</span> out. 2021 — nov. 2024</span>
+              <span class="next-case__name">Tray (LWSA) <span aria-hidden="true">→</span></span>
+            </a>
           </div>
         </div>
       </section>
 
-      <section class="specimen" id="testimonial" aria-labelledby="testimonial-label">
-        <h2 class="specimen__label" id="testimonial-label">Testimonial</h2>
-        <div class="surface surface--dark surface--quote">
-          <article class="testimonial">
-            <p class="quote testimonial__quote" aria-hidden="true">“</p>
-            <p class="body testimonial__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <footer class="testimonial__footer">
-              <span class="avatar">
-                <img src="assets/client-1.png" alt="">
-              </span>
-              <p class="client-name">Client Name</p>
-            </footer>
-          </article>
-        </div>
-      </section>
-
-      <section class="specimen" id="contact" aria-labelledby="contact-label">
-        <h2 class="specimen__label" id="contact-label">Fields</h2>
-        <div class="surface surface--dark">
-          <div class="stack stack--center">
-            <div class="section-heading">
-              <h3 class="section-title section-title--inverse">Get In Touch</h3>
-              <p class="lede">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-            <form class="contact-form" action="#contact">
-              <label class="field">
-                <span class="field__label">Email</span>
-                <input class="field__control" type="email" name="email" placeholder="Please enter your email">
-              </label>
-              <label class="field">
-                <span class="field__label">Mobile</span>
-                <input class="field__control" type="tel" name="mobile" placeholder="Enter mobile">
-              </label>
-              <label class="field">
-                <span class="field__label">Message</span>
-                <textarea class="field__control field__control--area" name="message" placeholder="Enter your message"></textarea>
-              </label>
-              <button class="button button--primary button--submit" type="submit">Submit <img src="assets/icon-arrow.svg" alt=""></button>
-            </form>
-          </div>
-        </div>
+      <section class="specimen" aria-labelledby="motion-title">
+        <p class="code-divider"><span class="text-primary">//</span><span id="motion-title">Movimento</span><span class="code-divider__line"></span></p>
+        <ul class="tech-row">
+          <li class="tech-tag">.page-* — transição de página 280ms (opacidade + translateY)</li>
+          <li class="tech-tag">.reveal — entrada ao scroll com animation-timeline: view()</li>
+          <li class="tech-tag">.hover-lift — sobe 4px com sombra verde</li>
+          <li class="tech-tag">rise-in — só transform, não atrasa o LCP</li>
+          <li class="tech-tag">particles.js — canvas fixo atrás do conteúdo</li>
+        </ul>
       </section>
     </main>
-    <script>
-      document.querySelector(".contact-form").addEventListener("submit", function (event) {
-        event.preventDefault();
-      });
-    </script>
   </body>
 </html>

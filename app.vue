@@ -1,4 +1,10 @@
 <template>
   <ParticleBackground />
-  <NuxtPage />
+  <div id="top" class="portfolio">
+    <Header />
+    <main>
+      <NuxtPage />
+    </main>
+    <SiteFooter />
+  </div>
 </template>

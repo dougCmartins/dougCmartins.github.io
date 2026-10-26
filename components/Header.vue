@@ -1,11 +1,9 @@
 <template>
   <header class="site-header">
-    <div class="site-bar">
+    <div class="content-width site-bar">
+      <NuxtLink class="brand" to="/" :aria-label="copy.nav.backToTop">&lt;dcmartins /&gt;</NuxtLink>
       <nav class="nav" :aria-label="copy.nav.main">
-        <a class="nav__link" href="#about">{{ copy.nav.about }}</a>
-        <a class="nav__link" href="#experience">{{ copy.nav.experience }}</a>
-        <a class="nav__link" href="#testimonials">{{ copy.nav.testimonials }}</a>
-        <a class="nav__link" href="#contact">{{ copy.nav.contact }}</a>
+        <NuxtLink v-for="link in links" :key="link.hash" class="nav__link link-underline" :to="`/${link.hash}`">{{ link.label }}</NuxtLink>
       </nav>
       <div class="nav-social">
         <a :href="contact.linkedin" target="_blank" rel="noreferrer" :aria-label="copy.hero.linkedin">
@@ -70,6 +68,13 @@ const { copy, locale, locales, setLocale } = usePortfolioLocale()
 const open = ref(false)
 const languageRoot = ref<HTMLElement | null>(null)
 
+const links = computed(() => [
+  { hash: '#about', label: copy.value.nav.about },
+  { hash: '#experience', label: copy.value.nav.experience },
+  { hash: '#testimonials', label: copy.value.nav.testimonials },
+  { hash: '#contact', label: copy.value.nav.contact },
+])
+
 function choose(code: PortfolioLocale) {
   setLocale(code)
   open.value = false
@@ -102,40 +107,60 @@ onBeforeUnmount(() => {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 5;
-  display: flex;
-  justify-content: center;
-  padding: 18px 16px;
-  background: var(--color-canvas);
+  z-index: 10;
+  border-bottom: 1px solid var(--color-line);
+  background: rgba(8, 8, 8, 0.82);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
 }
 
 .site-bar {
   display: flex;
   align-items: center;
-  gap: 40px;
-  padding: 14px 28px;
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-pill);
-  background: #111111;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 64px;
+}
+
+.brand {
+  color: var(--color-primary-text);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity var(--duration-color) ease;
+}
+
+.brand:hover {
+  opacity: 0.8;
 }
 
 .nav {
   display: flex;
   flex-wrap: wrap;
   gap: 28px;
-  justify-content: center;
+  margin-left: auto;
 }
 
 .nav__link {
   color: var(--color-text-muted);
-  font-size: var(--text-body);
+  font-family: var(--font-mono);
+  font-size: 13px;
   text-decoration: none;
+  transition: color var(--duration-color) ease;
+}
+
+.nav__link:hover {
+  color: var(--color-primary-text);
 }
 
 .nav-social {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
+  padding-left: 20px;
+  border-left: 1px solid var(--color-line);
 }
 
 .nav-social a {
@@ -143,7 +168,12 @@ onBeforeUnmount(() => {
   place-items: center;
   width: 28px;
   height: 28px;
-  color: var(--color-text);
+  color: var(--color-text-muted);
+  transition: color var(--duration-color) ease;
+}
+
+.nav-social a:hover {
+  color: var(--color-primary-text);
 }
 
 .nav-social svg {
@@ -158,19 +188,24 @@ onBeforeUnmount(() => {
 .language-trigger {
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 34px;
   padding: 0;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-line);
   border-radius: 50%;
   background: transparent;
   color: var(--color-text);
   cursor: pointer;
+  transition: border-color var(--duration-color) ease;
+}
+
+.language-trigger:hover {
+  border-color: var(--color-primary-border);
 }
 
 .language-trigger svg {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
 }
 
 .language-menu {
@@ -182,9 +217,9 @@ onBeforeUnmount(() => {
   padding: 6px;
   list-style: none;
   min-width: 112px;
-  border: 1px solid var(--color-border);
-  border-radius: 6px;
-  background: #141414;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  background: var(--color-card);
 }
 
 .language-menu button {
@@ -194,7 +229,7 @@ onBeforeUnmount(() => {
   border-radius: 4px;
   background: transparent;
   color: var(--color-text-muted);
-  font: inherit;
+  font-family: var(--font-mono);
   font-size: 13px;
   line-height: 20px;
   text-align: left;
@@ -203,18 +238,27 @@ onBeforeUnmount(() => {
 
 .language-menu button.is-selected,
 .language-menu button:hover {
-  color: var(--color-text);
+  color: var(--color-primary-text);
 }
 
-@media (max-width: 800px) {
+@media (max-width: 860px) {
   .site-bar {
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
+    row-gap: 4px;
+    padding: 10px 0;
   }
 
   .nav {
-    gap: 16px;
+    order: 3;
+    width: 100%;
+    gap: 18px;
+    margin-left: 0;
+    overflow-x: auto;
+  }
+
+  .nav-social {
+    padding-left: 0;
+    border-left: 0;
   }
 }
 </style>

@@ -97,16 +97,16 @@ async function start(motion: MediaQueryList, mobile: MediaQueryList) {
   try {
     particleWindow.particlesJS('portfolio-particles', {
       particles: {
-        number: { value: mobile.matches ? 12 : 32, density: { enable: true, value_area: 1400 } },
+        number: { value: mobile.matches ? 18 : 48, density: { enable: true, value_area: 1200 } },
         color: { value: colors.getPropertyValue('--particle-dot').trim() },
         shape: { type: 'circle' },
-        opacity: { value: 0.35, random: false },
+        opacity: { value: 0.55, random: false },
         size: { value: mobile.matches ? 2 : 2.5, random: true },
         line_linked: {
           enable: true,
-          distance: 110,
+          distance: 130,
           color: colors.getPropertyValue('--particle-line').trim(),
-          opacity: 0.22,
+          opacity: 0.32,
           width: 1,
         },
         move: {

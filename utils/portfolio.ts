@@ -37,22 +37,26 @@ export const experienceMedia = {
   greenn: {
     site: 'https://greenn.com.br/',
     host: 'greenn.com.br',
-    shot: '/images/experience/greenn-home.jpg',
+    shot: '/images/experience/greenn-lg.webp',
+    shotSmall: '/images/experience/greenn-sm.webp',
   },
   tray: {
     site: 'https://tray.com.br/',
     host: 'tray.com.br',
-    shot: '/images/experience/tray-home.png',
+    shot: '/images/experience/tray-lg.webp',
+    shotSmall: '/images/experience/tray-sm.webp',
   },
   desk360: {
     site: 'https://www.facebook.com/Desk360?locale=pt_BR',
     host: 'desk360.com.br',
-    shot: '/images/experience/desk360.jpg',
+    shot: '/images/experience/desk360-lg.webp',
+    shotSmall: '/images/experience/desk360-sm.webp',
   },
   cuca: {
     site: 'https://www.cucafresca.com.br/',
     host: 'cucafresca.com.br',
-    shot: '/images/experience/cuca-fresca-home.png',
+    shot: '/images/experience/cuca-lg.webp',
+    shotSmall: '/images/experience/cuca-sm.webp',
   },
 } as const
 

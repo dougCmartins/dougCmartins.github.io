@@ -1,3 +1,6 @@
+import { experienceMedia } from './utils/portfolio'
+
+const experienceIds = Object.keys(experienceMedia)
 const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000'
 const siteName = 'Douglas C Martins'
 const siteTitle = 'Douglas C Martins | Desenvolvedor Full Stack — DCMARTINS.CO'
@@ -18,6 +21,7 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   css: ['@/assets/css/main.css'],
   app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       title: siteTitle,
       charset: 'utf-8',
@@ -64,7 +68,7 @@ export default defineNuxtConfig({
           children: `
            html{scroll-behavior:smooth;}
             body {
-              font-family: IBMPlexMono, ui-monospace, monospace;
+              font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
               margin: 0 !important;
               box-sizing: border-box !important;
               background: #080808;
@@ -125,6 +129,10 @@ export default defineNuxtConfig({
     },
   },
   nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ['/', ...experienceIds.map(id => `/experience/${id}`)],
+    },
     compressPublicAssets: {
       gzip: true,
       brotli: true,
