@@ -11,18 +11,18 @@ export const contact = {
   phoneLabel: '(14) 99806-7008',
 } as const
 
-export const currentStack = ['PHP', 'Laravel', 'Vue.js', 'MySQL', 'RabbitMQ', 'Nuxt.js', 'Pest', 'Docker', 'Cursor'] as const
+export const currentStack = ['PHP 8', 'Laravel', 'Vue.js', 'Nuxt', 'MySQL', 'RabbitMQ', 'Redis', 'Claude', 'Cursor'] as const
 
 export const stackGroupItems = [
-  ['PHP', 'Laravel', 'JavaScript', 'Vue.js', 'Nuxt.js', 'Angular', 'Node.js', 'HTML5', 'CSS3', 'Tailwind', 'Bootstrap'],
-  ['MySQL', 'PostgreSQL', 'RabbitMQ', 'Docker', 'Git'],
-  ['Pest', 'DDD', 'Clean Code', 'New Relic', 'Datadog', 'Datadog RUM', 'Datadog APM', 'SSR', 'CWV (Core Web Vitals)', 'OWASP', '2FA', 'ACL', 'Scrum', 'Kanban', 'Sprint', 'Git Flow', 'CI/CD', 'Cursor'],
+  ['PHP 8', 'Laravel', 'JavaScript', 'Vue.js 3', 'Nuxt (SSR)', 'Pinia', 'vue-i18n', 'Node.js', 'HTML5', 'CSS3', 'Tailwind', 'Bootstrap'],
+  ['MySQL', 'PostgreSQL', 'RabbitMQ', 'Redis', 'Docker', 'Git'],
+  ['APIs REST', 'JSON:API', 'DDD', 'Clean Code', 'Strangler Fig', 'New Relic', 'Datadog RUM', 'Core Web Vitals', 'Pest', 'Jest', 'Playwright', 'OWASP', '2FA', 'ACL', 'CI/CD', 'Vite', 'Claude', 'Cursor'],
 ] as const
 
 export const experienceStacks = {
-  greenn: ['PHP', 'Laravel', 'MySQL', 'RabbitMQ', 'Vue.js', 'Nuxt.js', 'Pest', 'Datadog', 'Cursor'],
-  tray: ['PHP', 'Laravel', 'MySQL', 'JavaScript', 'Vue.js', 'New Relic'],
-  desk360: ['PHP', 'Laravel', 'MySQL', 'JavaScript', 'Vue.js', 'JSON:API'],
+  greenn: ['PHP', 'Laravel', 'Vue.js', 'Nuxt', 'Pinia', 'MySQL', 'RabbitMQ', 'Redis', 'Datadog', 'Pest', 'Playwright'],
+  tray: ['PHP', 'Laravel', 'Vue.js', 'JavaScript', 'MySQL', 'New Relic'],
+  desk360: ['PHP', 'Laravel', 'Vue.js', 'JavaScript', 'MySQL', 'JSON:API'],
   cuca: ['PHP', 'JavaScript', 'Angular 4', 'Node.js', 'PostgreSQL', 'HTML5', 'CSS', 'Bootstrap'],
 } as const
 

@@ -3,8 +3,8 @@ import { experienceMedia } from './utils/portfolio'
 const experienceIds = Object.keys(experienceMedia)
 const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000'
 const siteName = 'Douglas C Martins'
-const siteTitle = 'Douglas C Martins | Desenvolvedor Full Stack — DCMARTINS.CO'
-const siteDescription = 'Douglas C Martins — Desenvolvedor Full Stack que constrói produtos digitais escaláveis com Laravel, PHP e Vue.js. Experiência em pagamentos, e-commerce, APIs e arquitetura de software.'
+const siteTitle = 'Douglas C Martins | Desenvolvedor PHP Sênior — DCMARTINS.CO'
+const siteDescription = 'Douglas C Martins — Desenvolvedor PHP Sênior com 9 anos em e-commerce, pagamentos e produtos digitais. Laravel, Vue.js, RabbitMQ, performance, filas e desenvolvimento com IA.'
 const shareImage = `${siteUrl}/images/hero-bg.webp`
 const shareImageAlt = 'Fundo abstrato do portfólio de Douglas C Martins'
 
