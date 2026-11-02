@@ -4,7 +4,7 @@ export const cvFile = {
 } as const
 
 export const contact = {
-  email: 'martinsdouglas087@gmail.com',
+  email: 'dcmartinsdev@gmail.com',
   github: 'https://github.com/dougCmartins',
   linkedin: 'https://www.linkedin.com/in/dougcmartins/',
   phone: '+5514998067008',
