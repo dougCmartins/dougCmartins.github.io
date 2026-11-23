@@ -40,15 +40,16 @@
 </template>
 
 <script setup lang="ts">
-import { blogPosts, findPost, followingPost } from '~/utils/blog'
+import type { BlogPostPage } from '~/types/blog'
 
 const route = useRoute()
 const { copy } = usePortfolioLocale()
 const siteUrl = useRuntimeConfig().public.siteUrl
 
 const slug = computed(() => String(route.params.slug))
-const post = computed(() => findPost(blogPosts, slug.value))
-const upcoming = computed(() => followingPost(blogPosts, slug.value))
+const { data: page } = await useFetch<BlogPostPage>(() => `/api/blog/posts/${slug.value}.json`)
+const post = computed(() => page.value?.data)
+const upcoming = computed(() => page.value?.meta.next)
 
 if (!post.value) {
   throw createError({ statusCode: 404, statusMessage: 'Post not found', fatal: true })

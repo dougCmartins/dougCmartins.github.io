@@ -145,6 +145,8 @@ export type PortfolioCopy = {
     viewOnLinkedin: string
     contentLanguage: string
     empty: string
+    loading: string
+    end: string
   }
 }
 
@@ -411,6 +413,8 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
       viewOnLinkedin: 'Ver no LinkedIn',
       contentLanguage: '',
       empty: 'Nenhum post publicado ainda.',
+      loading: 'Carregando posts anteriores…',
+      end: 'Você chegou ao primeiro post.',
     },
     footer: {
       rights: '© 2026 Douglas C Martins. Todos os direitos reservados.',
@@ -662,6 +666,8 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
       viewOnLinkedin: 'View on LinkedIn',
       contentLanguage: 'Posts are written in Portuguese.',
       empty: 'No posts published yet.',
+      loading: 'Loading older posts…',
+      end: 'You reached the first post.',
     },
     footer: {
       rights: '© 2026 Douglas C Martins. All rights reserved.',
@@ -913,6 +919,8 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
       viewOnLinkedin: 'Ver en LinkedIn',
       contentLanguage: 'Los posts están escritos en portugués.',
       empty: 'Todavía no hay posts publicados.',
+      loading: 'Cargando posts anteriores…',
+      end: 'Llegaste al primer post.',
     },
     footer: {
       rights: '© 2026 Douglas C Martins. Todos los derechos reservados.',

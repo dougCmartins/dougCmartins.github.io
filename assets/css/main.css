@@ -1056,6 +1056,15 @@ button:focus-visible {
   gap: 20px;
 }
 
+.blog-feed-status {
+  min-height: 24px;
+  margin: 28px 0 0;
+  color: var(--color-text-muted);
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  text-align: center;
+}
+
 .blog-card {
   display: grid;
   gap: 12px;

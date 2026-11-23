@@ -24,3 +24,15 @@ export type BlogPost = {
   linkedinUrl: string
   sections: BlogSection[]
 }
+
+export type BlogPostSummary = Omit<BlogPost, 'sections'>
+
+export type BlogFeedPage = {
+  data: BlogPostSummary[]
+  meta: { nextCursor: string | null }
+}
+
+export type BlogPostPage = {
+  data: BlogPost
+  meta: { next: Pick<BlogPost, 'slug' | 'title'> | null }
+}

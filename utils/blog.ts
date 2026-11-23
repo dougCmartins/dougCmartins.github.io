@@ -1,19 +1,46 @@
-import type { BlogPost } from '~/types/blog'
+import type { BlogFeedPage, BlogPost, BlogPostSummary } from '~/types/blog'
 
-const postModules = import.meta.glob<BlogPost>('../content/blog/*.json', { eager: true, import: 'default' })
+export const BLOG_PAGE_SIZE = 5
+export const BLOG_FIRST_CURSOR = 'latest'
 
-export function sortPostsByDate(posts: readonly BlogPost[]): BlogPost[] {
+export function sortPostsByDate<T extends Pick<BlogPost, 'date'>>(posts: readonly T[]): T[] {
   return [...posts].sort((first, second) => second.date.localeCompare(first.date))
 }
 
-export const blogPosts: readonly BlogPost[] = sortPostsByDate(Object.values(postModules))
+export function toSummary({ sections: _sections, ...summary }: BlogPost): BlogPostSummary {
+  return summary
+}
 
-export function findPost(posts: readonly BlogPost[], slug: string): BlogPost | undefined {
+/**
+ * Cursor pagination over posts sorted newest first. The cursor is the slug of the last post
+ * already shown; BLOG_FIRST_CURSOR starts from the newest post.
+ */
+export function paginatePosts(posts: readonly BlogPostSummary[], cursor: string, limit = BLOG_PAGE_SIZE): BlogFeedPage {
+  const start = cursor === BLOG_FIRST_CURSOR ? 0 : posts.findIndex(post => post.slug === cursor) + 1
+  const data = start > 0 || cursor === BLOG_FIRST_CURSOR ? posts.slice(start, start + limit) : []
+  const last = data[data.length - 1]
+  const hasMore = Boolean(last) && start + data.length < posts.length
+
+  return { data, meta: { nextCursor: hasMore && last ? last.slug : null } }
+}
+
+/** Every cursor the feed can be asked for, so each page can be prerendered as a static file. */
+export function feedCursors(posts: readonly BlogPostSummary[], limit = BLOG_PAGE_SIZE): string[] {
+  const cursors = [BLOG_FIRST_CURSOR]
+  let next = paginatePosts(posts, BLOG_FIRST_CURSOR, limit).meta.nextCursor
+  while (next) {
+    cursors.push(next)
+    next = paginatePosts(posts, next, limit).meta.nextCursor
+  }
+  return cursors
+}
+
+export function findPost<T extends Pick<BlogPost, 'slug'>>(posts: readonly T[], slug: string): T | undefined {
   return posts.find(post => post.slug === slug)
 }
 
 /** The post listed right after the given one (the next older post), if any. */
-export function followingPost(posts: readonly BlogPost[], slug: string): BlogPost | undefined {
+export function followingPost<T extends Pick<BlogPost, 'slug'>>(posts: readonly T[], slug: string): T | undefined {
   const index = posts.findIndex(post => post.slug === slug)
   return index < 0 ? undefined : posts[index + 1]
 }
