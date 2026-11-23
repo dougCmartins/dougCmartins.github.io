@@ -1,8 +1,18 @@
-import { readdirSync } from 'node:fs'
+import { fileURLToPath } from 'node:url'
+import { readFileSync, readdirSync } from 'node:fs'
 import { experienceMedia } from './utils/portfolio'
+import { feedCursors, sortPostsByDate } from './utils/blog'
+import type { BlogPostSummary } from './types/blog'
 
 const experienceIds = Object.keys(experienceMedia)
-const blogSlugs = readdirSync('./content/blog').filter(file => file.endsWith('.json')).map(file => file.replace(/\.json$/, ''))
+const blogPosts = sortPostsByDate(readdirSync('./content/blog')
+  .filter(file => file.endsWith('.json'))
+  .map(file => JSON.parse(readFileSync(`./content/blog/${file}`, 'utf8')) as BlogPostSummary))
+const blogRoutes = [
+  '/blog',
+  ...blogPosts.flatMap(post => [`/blog/${post.slug}`, `/api/blog/posts/${post.slug}.json`]),
+  ...feedCursors(blogPosts).map(cursor => `/api/blog/feed/${cursor}.json`),
+]
 const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000'
 const siteName = 'Douglas C Martins'
 const siteTitle = 'Douglas C Martins | Desenvolvedor PHP Sênior — DCMARTINS.CO'
@@ -131,9 +141,10 @@ export default defineNuxtConfig({
     },
   },
   nitro: {
+    serverAssets: [{ baseName: 'blog', dir: fileURLToPath(new URL('./content/blog', import.meta.url)) }],
     prerender: {
       crawlLinks: true,
-      routes: ['/', '/blog', ...experienceIds.map(id => `/experience/${id}`), ...blogSlugs.map(slug => `/blog/${slug}`)],
+      routes: ['/', ...experienceIds.map(id => `/experience/${id}`), ...blogRoutes],
     },
     compressPublicAssets: {
       gzip: true,

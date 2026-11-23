@@ -13,10 +13,10 @@
         <span class="code-divider__line" aria-hidden="true" />
       </p>
 
-      <p v-if="!blogPosts.length" class="lede">{{ copy.blog.empty }}</p>
+      <p v-if="!posts.length" class="lede">{{ copy.blog.empty }}</p>
 
       <div class="blog-list">
-        <article v-for="post in blogPosts" :key="post.slug">
+        <article v-for="post in posts" :key="post.slug">
           <NuxtLink class="blog-card card hover-lift" :to="`/blog/${post.slug}`">
             <BlogPostMeta :date="post.date" :minutes="post.readingMinutes" />
             <h2 class="blog-card__title">{{ post.title }}</h2>
@@ -30,14 +30,53 @@
           </NuxtLink>
         </article>
       </div>
+
+      <p v-if="nextCursor" ref="sentinel" class="blog-feed-status" aria-live="polite">
+        <span v-if="loading">{{ copy.blog.loading }}</span>
+      </p>
+      <p v-else-if="posts.length > BLOG_PAGE_SIZE" class="blog-feed-status">
+        <span class="text-primary">//</span> {{ copy.blog.end }}
+      </p>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { blogPosts } from '~/utils/blog'
+import type { BlogFeedPage, BlogPostSummary } from '~/types/blog'
+import { BLOG_FIRST_CURSOR, BLOG_PAGE_SIZE } from '~/utils/blog'
 
 const cardTagLimit = 3
+const { data: firstPage } = await useFetch<BlogFeedPage>(`/api/blog/feed/${BLOG_FIRST_CURSOR}.json`)
+
+const posts = ref<BlogPostSummary[]>([...(firstPage.value?.data ?? [])])
+const nextCursor = ref<string | null>(firstPage.value?.meta.nextCursor ?? null)
+const loading = ref(false)
+const sentinel = ref<HTMLElement | null>(null)
+let observer: IntersectionObserver | undefined
+
+async function loadMore() {
+  if (loading.value || !nextCursor.value) return
+  loading.value = true
+  try {
+    const page = await $fetch<BlogFeedPage>(`/api/blog/feed/${nextCursor.value}.json`)
+    posts.value.push(...page.data)
+    nextCursor.value = page.meta.nextCursor
+  }
+  finally {
+    loading.value = false
+  }
+}
+
+watch(sentinel, (element) => {
+  observer?.disconnect()
+  if (!element) return
+  observer = new IntersectionObserver((entries) => {
+    if (entries.some(entry => entry.isIntersecting)) loadMore()
+  }, { rootMargin: '400px 0px' })
+  observer.observe(element)
+}, { flush: 'post' })
+
+onBeforeUnmount(() => observer?.disconnect())
 const { copy } = usePortfolioLocale()
 const siteUrl = useRuntimeConfig().public.siteUrl
 
