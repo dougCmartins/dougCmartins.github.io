@@ -185,7 +185,7 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
     },
     hero: {
       availability: 'Disponível para vagas remotas',
-      location: 'Pedra Azul, MG · Remoto',
+      location: 'Marília, SP · Remoto',
       name: 'Douglas C Martins',
       role: 'Desenvolvedor PHP Sênior · Laravel e Vue.js.',
       summary: [
@@ -436,7 +436,7 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
     },
     hero: {
       availability: 'Available for remote roles',
-      location: 'Pedra Azul, MG · Remote',
+      location: 'Marília, SP · Remote',
       name: 'Douglas C Martins',
       role: 'Senior PHP Developer · Laravel and Vue.js.',
       summary: [
@@ -687,7 +687,7 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
     },
     hero: {
       availability: 'Disponible para vacantes remotas',
-      location: 'Pedra Azul, MG · Remoto',
+      location: 'Marília, SP · Remoto',
       name: 'Douglas C Martins',
       role: 'Desarrollador PHP Sénior · Laravel y Vue.js.',
       summary: [
