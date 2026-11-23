@@ -1,0 +1,232 @@
+{
+  "slug": "documentacao-humanos-e-ia",
+  "title": "Seu código não explica o porquê !!",
+  "excerpt": "Como escrever documentação técnica que as pessoas leem e que a IA do seu time também entende.",
+  "date": "2026-11-19",
+  "readingMinutes": 3,
+  "tags": [
+    "DocumentacaoTecnica",
+    "EngenhariaDeSoftware",
+    "InteligenciaArtificial",
+    "AgentesDeIA",
+    "AGENTSmd",
+    "DeveloperExperience",
+    "BoasPraticas",
+    "FullStack",
+    "DesenvolvimentoDeSoftware"
+  ],
+  "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7529245537733308416/",
+  "sections": [
+    {
+      "label": "Documentação técnica",
+      "heading": "Seu código diz o quê. Só a documentação diz o porquê.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "\"O código é a documentação\" funciona até alguém perguntar por que aquela decisão foi tomada. E hoje a documentação tem dois leitores: o dev que chega no time e a IA que trabalha no repositório."
+        },
+        {
+          "type": "subheading",
+          "text": "O que uma boa documentação entrega"
+        },
+        {
+          "type": "paragraph",
+          "text": "e que o código sozinho não consegue"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Decisões mais consistentes no time",
+            "Lacunas do projeto aparecem antes do código",
+            "Gente nova produtiva mais rápido",
+            "O contexto de cada decisão fica registrado",
+            "Quem não é técnico também entende",
+            "Pesquisável, editável e versionada"
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "Bônus: escrever obriga você a organizar o próprio pensamento."
+        }
+      ]
+    },
+    {
+      "label": "Leitor 1 · pessoas",
+      "heading": "4 regras para escrever docs que alguém realmente lê",
+      "blocks": [
+        {
+          "type": "subheading",
+          "text": "Construa uma rampa"
+        },
+        {
+          "type": "paragraph",
+          "text": "Explique o jargão em poucas palavras. Nem todo leitor é dev sênior, e o produto também decide."
+        },
+        {
+          "type": "subheading",
+          "text": "Do macro ao específico"
+        },
+        {
+          "type": "paragraph",
+          "text": "Comece pelo objetivo e pelo problema. O contexto define o público e o nível de detalhe."
+        },
+        {
+          "type": "subheading",
+          "text": "Títulos que resumem"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cada seção numa frase que o leitor apressado lembra. Use diagramas âncora e caixas para o que pode ser pulado."
+        },
+        {
+          "type": "subheading",
+          "text": "Menos é mais"
+        },
+        {
+          "type": "paragraph",
+          "text": "Corte o parágrafo que não acrescenta, mesmo que tenha dado trabalho. Texto curto é texto lido."
+        },
+        {
+          "type": "paragraph",
+          "text": "título de seção · antes × depois"
+        },
+        {
+          "type": "paragraph",
+          "text": "Antes\"Notas sobre a fila\""
+        },
+        {
+          "type": "paragraph",
+          "text": "Depois\"Pedidos vão para uma fila para o checkout não travar no pico\""
+        },
+        {
+          "type": "callout",
+          "text": "⚠️ Dica para destravar: escreva primeiro só os tópicos, como um sumário. Muitas vezes ele vira o próprio índice do documento."
+        }
+      ]
+    },
+    {
+      "label": "Leitor 2 · agentes de IA",
+      "heading": "A IA do seu time também lê a documentação. Escreva para ela.",
+      "blocks": [
+        {
+          "type": "subheading",
+          "text": "Arquivo de contexto (AGENTS.md)"
+        },
+        {
+          "type": "note",
+          "text": "um README feito para o agente"
+        },
+        {
+          "type": "paragraph",
+          "text": "Um arquivo curto na raiz do repositório com o que o agente não consegue descobrir sozinho lendo o código."
+        },
+        {
+          "type": "code",
+          "text": "## Comandos\nmake setup · make test · make lint\n## Convenções\nActions por caso de uso, sem lógica no controller\n## Não mexa\nmigrations já aplicadas, pasta /legacy\n## Decisões\nver docs/adr/ antes de mudar a arquitetura"
+        },
+        {
+          "type": "note",
+          "text": "exemplo ilustrativo"
+        },
+        {
+          "type": "subheading",
+          "text": "O que ajuda e o que atrapalha"
+        },
+        {
+          "type": "note",
+          "text": "contexto custa: cada linha ocupa a atenção do modelo"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Comandos exatos de build, teste e lint",
+            "Convenções que fogem do padrão do framework",
+            "Limites claros: o que nunca alterar",
+            "Links para ADRs, não a decisão copiada"
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            "README inteiro colado de novo",
+            "Regra óbvia (\"escreva código limpo\")",
+            "Texto longo e desatualizado"
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "Mesma regra dos humanos: curto, específico e revisado. Doc ruim confunde a pessoa e também a IA."
+        }
+      ]
+    },
+    {
+      "label": "Na prática",
+      "heading": "A mesma informação, escrita de dois jeitos",
+      "blocks": [
+        {
+          "type": "table",
+          "rows": [
+            [
+              "Situação",
+              "Doc que ninguém usa",
+              "Doc que funciona"
+            ],
+            [
+              "Setup",
+              "\"Configure o ambiente\"",
+              "\"Rode make setup (2 min). Precisa de Docker.\""
+            ],
+            [
+              "Decisão",
+              "\"Usamos fila\"",
+              "\"Fila porque o pico dobra no fim do mês. Ver ADR-007.\""
+            ],
+            [
+              "Erro comum",
+              "nada escrito",
+              "\"Erro 419? Limpe o cache: php artisan optimize:clear\""
+            ],
+            [
+              "Para a IA",
+              "\"Siga boas práticas\"",
+              "\"Testes em tests/Feature; rode make test antes do PR\""
+            ],
+            [
+              "Público",
+              "só quem escreveu entende",
+              "começa pelo objetivo, depois o detalhe"
+            ]
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "⚠️ Teste rápido: peça para alguém novo no time (ou para a IA) seguir só a documentação. Onde a pessoa travar, falta uma linha."
+        }
+      ]
+    },
+    {
+      "label": "Resumo",
+      "heading": "Escrever documentação é como escrever código: só melhora com prática e revisão.",
+      "blocks": [
+        {
+          "type": "flow",
+          "steps": [
+            "Objetivo (por que existe)",
+            "Contexto (macro primeiro)",
+            "Detalhe (só o necessário)",
+            "Revisão (cortar o excesso)",
+            "IA + pessoas (dois leitores)"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "💬 No seu projeto, a documentação ajuda ou atrapalha?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Vocês já mantêm um arquivo de contexto para a IA ou ela ainda trabalha no escuro? Conta nos comentários."
+        }
+      ]
+    }
+  ]
+}

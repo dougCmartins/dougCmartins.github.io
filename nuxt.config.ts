@@ -1,6 +1,8 @@
+import { readdirSync } from 'node:fs'
 import { experienceMedia } from './utils/portfolio'
 
 const experienceIds = Object.keys(experienceMedia)
+const blogSlugs = readdirSync('./content/blog').filter(file => file.endsWith('.json')).map(file => file.replace(/\.json$/, ''))
 const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || 'http://localhost:3000'
 const siteName = 'Douglas C Martins'
 const siteTitle = 'Douglas C Martins | Desenvolvedor PHP Sênior — DCMARTINS.CO'
@@ -131,7 +133,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/', ...experienceIds.map(id => `/experience/${id}`)],
+      routes: ['/', '/blog', ...experienceIds.map(id => `/experience/${id}`), ...blogSlugs.map(slug => `/blog/${slug}`)],
     },
     compressPublicAssets: {
       gzip: true,

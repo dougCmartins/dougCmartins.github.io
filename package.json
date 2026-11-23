@@ -8,7 +8,8 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "test": "vitest run"
+    "test": "vitest run",
+    "blog:import": "node scripts/import-linkedin-posts.ts"
   },
   "dependencies": {
     "@nuxt/image": "^1.9.0",
@@ -21,6 +22,7 @@
     "@nuxt/types": "^2.18.1",
     "@types/node": "^22.13.0",
     "cssnano": "^7.0.6",
+    "node-html-parser": "^6.1.13",
     "typescript": "^5.7.3",
     "vitest": "^3.2.7"
   }
