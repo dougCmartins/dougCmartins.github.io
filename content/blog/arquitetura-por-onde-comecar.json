@@ -1,0 +1,296 @@
+{
+  "slug": "arquitetura-por-onde-comecar",
+  "title": "Arquitetura não começa no diagrama, começa na decisão !!",
+  "excerpt": "Como usar SLO, ATAM, CBAM, ADR e BATNA para sair do \"o gestor pediu uma arquitetura\" e chegar numa proposta defendida com números.",
+  "date": "2026-11-16",
+  "readingMinutes": 3,
+  "tags": [
+    "ArquiteturaDeSoftware",
+    "EngenhariaDeSoftware",
+    "SoftwareArchitecture",
+    "ATAM",
+    "ADR",
+    "SLO",
+    "TradeOffs",
+    "TechLead",
+    "FullStack",
+    "DesenvolvimentoDeSoftware"
+  ],
+  "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7528221822304083986/",
+  "sections": [
+    {
+      "label": "Arquitetura de software",
+      "heading": "Seu gestor pediu uma arquitetura. Por onde começar?",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A tentação é abrir a ferramenta de diagrama e desenhar microsserviços. Mas arquitetura não começa no desenho: começa no motivo da mudança e termina numa decisão que você consegue defender com números."
+        },
+        {
+          "type": "subheading",
+          "text": "Antes de tudo: qual é o driver?"
+        },
+        {
+          "type": "paragraph",
+          "text": "O que está forçando a mudança"
+        },
+        {
+          "type": "list",
+          "items": [
+            "📈 Escala — receber o dobro de clientes",
+            "⚡ Performance — responder na metade do tempo",
+            "🚀 Agilidade — feature simples leva semanas",
+            "🧯 Resiliência — bug em produção toda semana",
+            "🔗 Acoplamento — um time trava o outro",
+            "💰 Custo — funciona, mas custa caro"
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "Leitura: cada driver puxa a arquitetura para um lado diferente. Sem saber qual é o seu, qualquer desenho é palpite."
+        }
+      ]
+    },
+    {
+      "label": "Passo 1 · transforme o driver em número",
+      "heading": "\"Precisa ser rápido\" não é requisito. SLO é.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Antes de comparar soluções, defina como o sucesso vai ser medido. São três camadas:"
+        },
+        {
+          "type": "subheading",
+          "text": "SLI · o que medir"
+        },
+        {
+          "type": "paragraph",
+          "text": "Indicador técnico mensurável de um aspecto crítico do serviço: latência, throughput, disponibilidade, durabilidade."
+        },
+        {
+          "type": "note",
+          "text": "p95 latência"
+        },
+        {
+          "type": "note",
+          "text": "→ medido, não opinado"
+        },
+        {
+          "type": "subheading",
+          "text": "SLO · a meta"
+        },
+        {
+          "type": "paragraph",
+          "text": "O nível de serviço esperado, construído em cima do SLI. É ele que vira critério de decisão arquitetural."
+        },
+        {
+          "type": "note",
+          "text": "p95 < 1s · 99,9%"
+        },
+        {
+          "type": "note",
+          "text": "→ guia o trade-off"
+        },
+        {
+          "type": "subheading",
+          "text": "SLA · o contrato"
+        },
+        {
+          "type": "paragraph",
+          "text": "Acordo formal com o cliente, com consequência comercial se for violado. Sempre mais folgado que o SLO."
+        },
+        {
+          "type": "note",
+          "text": "multa se < 99,5%"
+        },
+        {
+          "type": "note",
+          "text": "→ risco de negócio"
+        },
+        {
+          "type": "callout",
+          "text": "⚠️ Sem número, \"precisamos escalar\" vira opinião contra opinião. Com SLO, latência, throughput, MTTR e uptime viram régua para comparar as opções."
+        }
+      ]
+    },
+    {
+      "label": "Passo 2 · compare com método",
+      "heading": "ATAM mostra o trade-off. CBAM mostra se vale o custo.",
+      "blocks": [
+        {
+          "type": "subheading",
+          "text": "ATAM · análise de trade-offs"
+        },
+        {
+          "type": "note",
+          "text": "pergunta: o que eu ganho e o que eu perco?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Você escreve cenários de atributo de qualidade (\"pico de 2x no fim do mês com p95 < 1s\") e avalia cada opção contra eles, achando riscos e pontos de trade-off."
+        },
+        {
+          "type": "table",
+          "rows": [
+            [
+              "Cenário",
+              "Monolito modular",
+              "Microsserviços",
+              "Serverless"
+            ],
+            [
+              "Escala 2x",
+              "média",
+              "alta",
+              "alta"
+            ],
+            [
+              "Latência",
+              "baixa",
+              "rede",
+              "cold start"
+            ],
+            [
+              "Operação",
+              "simples",
+              "complexa",
+              "média"
+            ],
+            [
+              "Times isolados",
+              "módulos",
+              "total",
+              "por função"
+            ]
+          ]
+        },
+        {
+          "type": "note",
+          "text": "ilustrativo · o resultado muda conforme o seu cenário"
+        },
+        {
+          "type": "subheading",
+          "text": "CBAM · custo e retorno"
+        },
+        {
+          "type": "note",
+          "text": "pergunta: o benefício paga a conta?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Pega as opções que sobreviveram ao ATAM e coloca benefício e custo na mesma régua. É a linguagem que o gestor entende."
+        },
+        {
+          "type": "code",
+          "text": "ROI = (benefício − custo) ÷ custo × 100%"
+        },
+        {
+          "type": "table",
+          "rows": [
+            [
+              "Opção",
+              "Custo",
+              "Benefício",
+              "ROI"
+            ],
+            [
+              "Monolito modular",
+              "40",
+              "100",
+              "150%"
+            ],
+            [
+              "Microsserviços",
+              "120",
+              "180",
+              "50%"
+            ]
+          ]
+        },
+        {
+          "type": "note",
+          "text": "valores fictícios · unidades de esforço"
+        },
+        {
+          "type": "callout",
+          "text": "Ganho: a escolha deixa de ser \"a tecnologia da moda\" e vira a que entrega o SLO com o melhor retorno."
+        }
+      ]
+    },
+    {
+      "label": "Passo 3 · registre e tenha um plano B",
+      "heading": "ADR guarda o porquê. BATNA salva quando dizem \"não\".",
+      "blocks": [
+        {
+          "type": "subheading",
+          "text": "ADR · registro da decisão"
+        },
+        {
+          "type": "note",
+          "text": "daqui a 1 ano: \"por que fizeram assim?\""
+        },
+        {
+          "type": "paragraph",
+          "text": "Um arquivo curto, versionado junto do código, com a justificativa técnica e econômica. O contexto de hoje pode não ser o de amanhã."
+        },
+        {
+          "type": "code",
+          "text": "# ADR-007: Monolito modular para pedidos\nStatus:   aceito\nContexto: pico de 2x no fim do mês, SLO p95 < 1s\nDecisão:  módulos com contratos por interface\nAlternativas: microsserviços (ROI menor)\nConsequências: deploy único; extrair\n              o módulo se passar de 3x"
+        },
+        {
+          "type": "subheading",
+          "text": "BATNA · a melhor alternativa"
+        },
+        {
+          "type": "note",
+          "text": "e se a sua proposta for recusada?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Conceito de negociação aplicado à arquitetura: chegue na reunião sabendo qual é o melhor caminho se o plano A não for aprovado."
+        },
+        {
+          "type": "flow",
+          "steps": [
+            "Plano A: refatorar o módulo lento",
+            "negócio: \"feature nova primeiro\"",
+            "BATNA: otimizar só o banco como paliativo"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "O sistema não para, a feature sai e a refatoração entra no próximo ciclo, já registrada num ADR."
+        },
+        {
+          "type": "callout",
+          "text": "Ganho: você negocia com alternativa pronta, em vez de sair da reunião sem nada."
+        }
+      ]
+    },
+    {
+      "label": "Resumo",
+      "heading": "Arquitetura não é escolher a tecnologia da moda. É decidir com números e deixar registrado.",
+      "blocks": [
+        {
+          "type": "flow",
+          "steps": [
+            "Driver (por que mudar)",
+            "SLO (como medir)",
+            "ATAM (trade-offs)",
+            "CBAM (custo × retorno)",
+            "ADR (registro)",
+            "BATNA (plano B)"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "💬 E no seu time, como as decisões de arquitetura são tomadas?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Vocês registram em ADR ou a justificativa vive só na cabeça de quem decidiu? Conta nos comentários."
+        }
+      ]
+    }
+  ]
+}

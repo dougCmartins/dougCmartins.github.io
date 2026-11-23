@@ -1,0 +1,232 @@
+{
+  "slug": "tokens-e-embeddings",
+  "title": "A IA não lê palavras, ela lê números !!",
+  "excerpt": "Como tokens e embeddings explicam o custo, o limite de contexto e a busca semântica que faz a IA responder com os seus documentos.",
+  "date": "2026-11-17",
+  "readingMinutes": 2,
+  "tags": [
+    "InteligenciaArtificial",
+    "Embeddings",
+    "RAG",
+    "EngenhariaDePrompt",
+    "LLM",
+    "BuscaSemantica",
+    "MachineLearning",
+    "FullStack",
+    "DesenvolvimentoDeSoftware"
+  ],
+  "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7528427309645877248/",
+  "sections": [
+    {
+      "label": "Fundamentos de IA",
+      "heading": "A IA não lê palavras. Ela lê números.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Antes de responder qualquer coisa, o modelo quebra o seu texto em tokens e transforma cada pedaço em embeddings. Entender esses dois conceitos explica custo, limite de contexto e por que a busca semântica funciona."
+        },
+        {
+          "type": "subheading",
+          "text": "O caminho do seu texto"
+        },
+        {
+          "type": "paragraph",
+          "text": "do prompt até o modelo"
+        },
+        {
+          "type": "flow",
+          "steps": [
+            "\"Como cancelo meu plano?\"",
+            "[Como] [ cancel] [o] [ meu] [ plano] [?]",
+            "[4521, 18803, 78, 2017, 9134, 30]",
+            "[0.12, -0.87, 0.33, … ] · centenas de dimensões"
+          ]
+        },
+        {
+          "type": "note",
+          "text": "ilustrativo · a divisão e os números variam por modelo"
+        }
+      ]
+    },
+    {
+      "label": "Conceito 1 · tokens",
+      "heading": "Token é a unidade que o modelo processa (e cobra)",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Não é palavra nem letra: é um pedaço de texto. Palavras comuns viram um token, palavras longas ou raras viram vários."
+        },
+        {
+          "type": "subheading",
+          "text": "Divide o texto"
+        },
+        {
+          "type": "paragraph",
+          "text": "Uma palavra pode virar vários pedaços:"
+        },
+        {
+          "type": "note",
+          "text": "document | ação | técn | ica"
+        },
+        {
+          "type": "subheading",
+          "text": "Define o custo"
+        },
+        {
+          "type": "paragraph",
+          "text": "APIs de IA cobram por token de entrada e de saída. Prompt inchado e resposta longa pesam na conta."
+        },
+        {
+          "type": "subheading",
+          "text": "Define o limite"
+        },
+        {
+          "type": "paragraph",
+          "text": "A janela de contexto é medida em tokens. Passou do limite, o começo da conversa ou do documento fica de fora."
+        },
+        {
+          "type": "callout",
+          "text": "⚠️ Dica prática: português costuma gastar mais tokens que inglês para dizer a mesma coisa. Seja direto no prompt e peça respostas no tamanho que você precisa."
+        }
+      ]
+    },
+    {
+      "label": "Conceito 2 · embeddings",
+      "heading": "Embedding é um mapa de significado",
+      "blocks": [
+        {
+          "type": "subheading",
+          "text": "O que é"
+        },
+        {
+          "type": "note",
+          "text": "texto → vetor de números"
+        },
+        {
+          "type": "paragraph",
+          "text": "Uma representação distribuída do texto: uma lista de números que posiciona cada frase num \"mapa\". Textos com significado parecido ficam próximos, mesmo sem nenhuma palavra em comum."
+        },
+        {
+          "type": "paragraph",
+          "text": "A proximidade vira uma nota (similaridade), e é ela que diz o quanto dois textos falam da mesma coisa."
+        },
+        {
+          "type": "callout",
+          "text": "Analogia: é como um GPS de ideias. \"Cancelar assinatura\" e \"encerrar plano\" moram no mesmo bairro."
+        },
+        {
+          "type": "subheading",
+          "text": "Na prática: nota de proximidade"
+        },
+        {
+          "type": "note",
+          "text": "pergunta: \"como cancelo meu plano?\""
+        },
+        {
+          "type": "table",
+          "rows": [
+            [
+              "Texto comparado",
+              "Nota",
+              ""
+            ],
+            [
+              "\"Encerrar a assinatura\"",
+              "0,91",
+              ""
+            ],
+            [
+              "\"Desativar cobrança mensal\"",
+              "0,84",
+              ""
+            ],
+            [
+              "\"Alterar forma de pagamento\"",
+              "0,52",
+              ""
+            ],
+            [
+              "\"Receita de bolo de cenoura\"",
+              "0,07",
+              ""
+            ]
+          ]
+        },
+        {
+          "type": "note",
+          "text": "valores fictícios · ilustrativo"
+        },
+        {
+          "type": "callout",
+          "text": "Leitura: uma busca por palavra-chave não acharia \"encerrar a assinatura\". O embedding acha."
+        }
+      ]
+    },
+    {
+      "label": "Na prática · busca semântica e RAG",
+      "heading": "Juntando os dois: a IA responde com os seus documentos",
+      "blocks": [
+        {
+          "type": "flow",
+          "steps": [
+            "Documentos (manuais, wiki, FAQ)",
+            "Chunks (pedaços menores)",
+            "Embeddings (um vetor por chunk)",
+            "Banco vetorial (índice de busca)",
+            "Pergunta (do usuário)",
+            "Embedding (da pergunta)",
+            "Mais próximos (top 3 a 5 chunks)",
+            "Prompt + contexto (resposta fundamentada)"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Chunk do tamanho certo"
+        },
+        {
+          "type": "paragraph",
+          "text": "Pedaço grande demais gasta tokens; pequeno demais perde o contexto."
+        },
+        {
+          "type": "subheading",
+          "text": "Mesmo modelo dos dois lados"
+        },
+        {
+          "type": "paragraph",
+          "text": "Documentos e perguntas precisam ser vetorizados pelo mesmo modelo de embedding."
+        },
+        {
+          "type": "subheading",
+          "text": "Teste com perguntas reais"
+        },
+        {
+          "type": "paragraph",
+          "text": "Avalie a busca com o que o usuário de fato pergunta, não com exemplos inventados."
+        }
+      ]
+    },
+    {
+      "label": "Resumo",
+      "heading": "Tokens explicam o custo e o limite. Embeddings explicam o significado.",
+      "blocks": [
+        {
+          "type": "flow",
+          "steps": [
+            "Texto (o seu prompt)",
+            "Tokens (custo e contexto)",
+            "Embeddings (significado)",
+            "Busca semântica (RAG)"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "💬 Você já usou embeddings em algum projeto?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Busca interna, recomendação, atendimento? Conta nos comentários qual foi o maior desafio."
+        }
+      ]
+    }
+  ]
+}

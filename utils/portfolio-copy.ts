@@ -65,6 +65,7 @@ export type PortfolioCopy = {
     experience: string
     testimonials: string
     projects: string
+    blog: string
     contact: string
     backToTop: string
     language: string
@@ -131,6 +132,20 @@ export type PortfolioCopy = {
     rights: string
     backToTop: string
   }
+  blog: {
+    title: string
+    intro: string
+    postsLabel: string
+    articleLabel: string
+    nextLabel: string
+    readPost: string
+    continueReading: string
+    back: string
+    readingTime: string
+    viewOnLinkedin: string
+    contentLanguage: string
+    empty: string
+  }
 }
 
 const sharedJobs = {
@@ -162,6 +177,7 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
       experience: 'Experiência',
       testimonials: 'Depoimentos',
       projects: 'Projetos',
+      blog: 'Blog',
       contact: 'Contato',
       backToTop: 'DCMARTINS.CO — Voltar ao topo',
       language: 'Idioma',
@@ -382,6 +398,20 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
       summary: 'Aberto a vagas remotas de Desenvolvedor Full Stack ou Back-end Sênior (PHP/Laravel).',
       action: 'Vamos conversar',
     },
+    blog: {
+      title: 'Blog',
+      intro: 'Notas sobre arquitetura, IA, performance e engenharia de software. Os mesmos conteúdos que publico no LinkedIn, em formato de artigo.',
+      postsLabel: 'Posts',
+      articleLabel: 'Artigo',
+      nextLabel: 'Próximo post',
+      readPost: 'Ler post',
+      continueReading: 'Continuar lendo',
+      back: 'Voltar para o blog',
+      readingTime: '{minutes} min de leitura',
+      viewOnLinkedin: 'Ver no LinkedIn',
+      contentLanguage: '',
+      empty: 'Nenhum post publicado ainda.',
+    },
     footer: {
       rights: '© 2026 Douglas C Martins. Todos os direitos reservados.',
       backToTop: 'Voltar ao topo',
@@ -398,6 +428,7 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
       experience: 'Experience',
       testimonials: 'Testimonials',
       projects: 'Projects',
+      blog: 'Blog',
       contact: 'Contact',
       backToTop: 'DCMARTINS.CO — Back to top',
       language: 'Language',
@@ -618,6 +649,20 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
       summary: 'Open to remote Senior Full Stack or Back-end (PHP/Laravel) roles.',
       action: 'Let’s talk',
     },
+    blog: {
+      title: 'Blog',
+      intro: 'Notes on architecture, AI, performance and software engineering. The same content I publish on LinkedIn, as articles.',
+      postsLabel: 'Posts',
+      articleLabel: 'Article',
+      nextLabel: 'Next post',
+      readPost: 'Read post',
+      continueReading: 'Keep reading',
+      back: 'Back to the blog',
+      readingTime: '{minutes} min read',
+      viewOnLinkedin: 'View on LinkedIn',
+      contentLanguage: 'Posts are written in Portuguese.',
+      empty: 'No posts published yet.',
+    },
     footer: {
       rights: '© 2026 Douglas C Martins. All rights reserved.',
       backToTop: 'Back to top',
@@ -634,6 +679,7 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
       experience: 'Experiencia',
       testimonials: 'Testimonios',
       projects: 'Proyectos',
+      blog: 'Blog',
       contact: 'Contacto',
       backToTop: 'DCMARTINS.CO — Volver arriba',
       language: 'Idioma',
@@ -853,6 +899,20 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
       title: ['Construyamos algo', 'que marque la diferencia.'],
       summary: 'Abierto a vacantes remotas de Desarrollador Full Stack o Back-end Sénior (PHP/Laravel).',
       action: 'Hablemos',
+    },
+    blog: {
+      title: 'Blog',
+      intro: 'Notas sobre arquitectura, IA, rendimiento e ingeniería de software. El mismo contenido que publico en LinkedIn, en formato de artículo.',
+      postsLabel: 'Posts',
+      articleLabel: 'Artículo',
+      nextLabel: 'Siguiente post',
+      readPost: 'Leer post',
+      continueReading: 'Seguir leyendo',
+      back: 'Volver al blog',
+      readingTime: '{minutes} min de lectura',
+      viewOnLinkedin: 'Ver en LinkedIn',
+      contentLanguage: 'Los posts están escritos en portugués.',
+      empty: 'Todavía no hay posts publicados.',
     },
     footer: {
       rights: '© 2026 Douglas C Martins. Todos los derechos reservados.',

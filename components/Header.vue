@@ -5,6 +5,7 @@
       <nav class="nav" :aria-label="copy.nav.main">
         <NuxtLink v-for="link in links" :key="link.hash" class="nav__link link-underline" :to="`/${link.hash}`">{{ link.label }}</NuxtLink>
       </nav>
+      <NuxtLink class="nav__link nav__link--blog link-underline" to="/blog" active-class="is-active">{{ copy.nav.blog }}</NuxtLink>
       <div class="nav-social">
         <a :href="contact.linkedin" target="_blank" rel="noreferrer" :aria-label="copy.hero.linkedin">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -151,7 +152,12 @@ onBeforeUnmount(() => {
   transition: color var(--duration-color) ease;
 }
 
-.nav__link:hover {
+.nav__link--blog {
+  margin-left: 4px;
+}
+
+.nav__link:hover,
+.nav__link.is-active {
   color: var(--color-primary-text);
 }
 
@@ -254,6 +260,10 @@ onBeforeUnmount(() => {
     gap: 18px;
     margin-left: 0;
     overflow-x: auto;
+  }
+
+  .nav__link--blog {
+    margin-left: auto;
   }
 
   .nav-social {
