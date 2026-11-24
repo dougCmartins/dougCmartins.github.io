@@ -146,6 +146,19 @@ describe('extractSections', () => {
   })
 })
 
+describe('extractSections spacing', () => {
+  it('keeps a space between adjacent inline elements', () => {
+    // Arrange
+    const html = '<body><section class="slide"><h2>T</h2><div class="agent"><span><b>Buscar</b> · arquivos</span><span class="m">modelo leve</span></div></section></body>'
+
+    // Act
+    const [section] = extractSections(html)
+
+    // Assert
+    expect(section.blocks).toEqual([{ type: 'paragraph', text: 'Buscar · arquivos modelo leve' }])
+  })
+})
+
 describe('buildPost', () => {
   it('combines the queue entry, caption and slides into a blog post', () => {
     // Arrange
