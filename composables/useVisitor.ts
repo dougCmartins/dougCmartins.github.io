@@ -1,4 +1,4 @@
-import { dismissWelcome, startVisit, type VisitorStorage } from '~/utils/visitor'
+import { dismissWelcome, shouldShowWelcome, startVisit, type VisitorStorage } from '~/utils/visitor'
 
 const memoryStorage: VisitorStorage = { getItem: () => null, setItem: () => {} }
 
@@ -24,10 +24,15 @@ export function useVisitor() {
     welcomeOpen.value = snapshot.showWelcome
   }
 
+  /** Re-reads the dismissal flag without counting a new visit (e.g. a page restored from the back/forward cache). */
+  function refreshWelcome() {
+    welcomeOpen.value = shouldShowWelcome(browserStorage('localStorage'))
+  }
+
   function closeWelcome() {
     dismissWelcome(browserStorage('localStorage'))
     welcomeOpen.value = false
   }
 
-  return { visitCount, welcomeOpen, start, closeWelcome }
+  return { visitCount, welcomeOpen, start, refreshWelcome, closeWelcome }
 }
