@@ -3,6 +3,7 @@
     <div class="content-width footer-inner">
       <NuxtLink class="brand-footer" to="/">DCMARTINS.CO</NuxtLink>
       <span>{{ copy.footer.rights }}</span>
+      <VisitCounter />
       <NuxtLink class="link-underline" to="/#top">{{ copy.footer.backToTop }}</NuxtLink>
     </div>
   </footer>
