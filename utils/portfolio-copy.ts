@@ -132,6 +132,17 @@ export type PortfolioCopy = {
     rights: string
     backToTop: string
   }
+  visitor: {
+    counterLabel: string
+    counterHint: string
+    windowTitle: string
+    greeting: string
+    title: string
+    description: string
+    status: string
+    action: string
+    close: string
+  }
   blog: {
     title: string
     intro: string
@@ -420,6 +431,17 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
       rights: '© 2026 Douglas C Martins. Todos os direitos reservados.',
       backToTop: 'Voltar ao topo',
     },
+    visitor: {
+      counterLabel: 'Visitas neste navegador:',
+      counterHint: 'Contagem salva só neste navegador. Nada é enviado a servidores.',
+      windowTitle: 'portfolio / welcome',
+      greeting: '// Olá, visitante',
+      title: 'Seja bem-vindo',
+      description: 'Que bom ter você por aqui. Conheça meus projetos, ideias e experiências em tecnologia.',
+      status: 'Conexão estabelecida',
+      action: 'Vamos lá',
+      close: 'Fechar boas-vindas',
+    },
   }),
   en: buildCopy('en', {
     meta: {
@@ -673,6 +695,17 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
       rights: '© 2026 Douglas C Martins. All rights reserved.',
       backToTop: 'Back to top',
     },
+    visitor: {
+      counterLabel: 'Visits in this browser:',
+      counterHint: 'Counted only in this browser. Nothing is sent to any server.',
+      windowTitle: 'portfolio / welcome',
+      greeting: '// Hello, visitor',
+      title: 'Welcome',
+      description: 'Glad to have you here. Explore my projects, ideas and experience in technology.',
+      status: 'Connection established',
+      action: "Let's go",
+      close: 'Close welcome',
+    },
   }),
   es: buildCopy('es', {
     meta: {
@@ -925,6 +958,17 @@ export const portfolioCopy: Record<PortfolioLocale, PortfolioCopy> = {
     footer: {
       rights: '© 2026 Douglas C Martins. Todos los derechos reservados.',
       backToTop: 'Volver arriba',
+    },
+    visitor: {
+      counterLabel: 'Visitas en este navegador:',
+      counterHint: 'Conteo guardado solo en este navegador. No se envía nada a ningún servidor.',
+      windowTitle: 'portfolio / welcome',
+      greeting: '// Hola, visitante',
+      title: 'Bienvenido',
+      description: 'Qué bueno tenerte por aquí. Conoce mis proyectos, ideas y experiencias en tecnología.',
+      status: 'Conexión establecida',
+      action: 'Vamos',
+      close: 'Cerrar bienvenida',
     },
   }),
 }
