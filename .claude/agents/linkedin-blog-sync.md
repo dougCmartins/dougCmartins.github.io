@@ -12,6 +12,10 @@ Você orquestra a sincronização entre a fila de posts do LinkedIn e o blog (`/
 - Cópia opcional nos arquivos do projeto: `posts/` e `fila-linkedin/FILA.md`. Use a cópia só se o PC não estiver acessível.
 - Copie para o container apenas `FILA.md` e, de cada post publicado, o `post-*.md`, o `carrossel.html` e o `PUBLICADO.txt` (se existir), mantendo a estrutura de pastas.
 
+## Execução automática
+
+O caminho principal é o `scripts/sync-linkedin-blog.sh`, que roda pelo cron no PC do Douglas (onde está a pasta "Posts LinkedIn"), de hora em hora entre 9h40 e 22h40. Ele importa, roda os testes, faz push de uma branch `blog-sync/<slugs>` e abre o PR com o `gh`. Use os passos abaixo só quando precisar sincronizar manualmente ou conferir um PR aberto pelo script.
+
 ## Passos
 
 1. Atualize `main` e crie a branch `claude/blog-sync-AAAA-MM-DD`.
