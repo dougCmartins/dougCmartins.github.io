@@ -1,0 +1,230 @@
+{
+  "slug": "economia-de-tokens-ia",
+  "title": "Meus tokens de IA acabavam rápido demais !!",
+  "excerpt": "Como orquestrador, subagentes e barreiras de contexto reduziram o consumo da minha IA sem eu precisar pagar um plano maior.",
+  "date": "2026-11-24",
+  "readingMinutes": 3,
+  "tags": [
+    "IA",
+    "ClaudeCode",
+    "AgentesDeIA",
+    "EngenhariaDeSoftware",
+    "ProdutividadeDev",
+    "DesenvolvimentoDeSoftware",
+    "FullStack"
+  ],
+  "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7530963959256915969/",
+  "sections": [
+    {
+      "label": "IA no dia a dia",
+      "heading": "Meus tokens acabavam rápido. Em vez de pagar mais, mudei o fluxo.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Eu usava o assistente de código como \"faz-tudo\": um único chat lia a tarefa, lia o design, investigava, editava e validava. Resultado: contexto inchado e limite estourando no meio do trabalho."
+        },
+        {
+          "type": "subheading",
+          "text": "Medi antes de mexer"
+        },
+        {
+          "type": "paragraph",
+          "text": "o comando /context mostrou dois vilões"
+        },
+        {
+          "type": "subheading",
+          "text": "Custo fixo"
+        },
+        {
+          "type": "paragraph",
+          "text": "MCPs, plugins e skills carregados em toda sessão, mesmo quando nenhum deles é usado."
+        },
+        {
+          "type": "subheading",
+          "text": "Histórico"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cada turno reenvia tudo o que já foi lido. Arquivo grande lido uma vez é pago de novo a cada resposta."
+        },
+        {
+          "type": "callout",
+          "text": "Lição 1: sem medir, eu teria cortado no lugar errado."
+        }
+      ]
+    },
+    {
+      "label": "Mudanças 1 e 2 · divisão de papéis",
+      "heading": "O orquestrador não executa, decide.",
+      "blocks": [
+        {
+          "type": "subheading",
+          "text": "Orquestrador"
+        },
+        {
+          "type": "note",
+          "text": "sessão principal"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Define o escopo",
+            "Delega para o subagente certo",
+            "Confere o resultado"
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            "Não lê arquivo grande",
+            "Não cola resposta bruta de ferramenta"
+          ]
+        },
+        {
+          "type": "subheading",
+          "text": "Subagentes com \"pouco poder de fogo\""
+        },
+        {
+          "type": "note",
+          "text": "papel estreito + o modelo certo para cada um"
+        },
+        {
+          "type": "paragraph",
+          "text": "Buscar · localizar arquivos e trechos modelo leve · Haiku"
+        },
+        {
+          "type": "paragraph",
+          "text": "Validar · rodar checagens e testes modelo leve · Haiku"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ler design e pesquisar · resumir o que importa modelo médio · Sonnet"
+        },
+        {
+          "type": "paragraph",
+          "text": "Implementar · editar dentro do escopo modelo médio · Sonnet"
+        },
+        {
+          "type": "paragraph",
+          "text": "↩ cada um devolve só: caminho do arquivo + 5 linhas de resumo"
+        }
+      ]
+    },
+    {
+      "label": "Mudanças 3 e 4 · barreiras",
+      "heading": "Barreiras que seguram o contexto e as regras",
+      "blocks": [
+        {
+          "type": "subheading",
+          "text": "Barreiras de contexto"
+        },
+        {
+          "type": "note",
+          "text": "o que é pesado não chega na sessão principal"
+        },
+        {
+          "type": "list",
+          "items": [
+            "O design vira um resumo em arquivo, não uma resposta gigante no chat",
+            "A resposta bruta da ferramenta fica presa no subagente",
+            "Pastas pesadas com leitura bloqueada: dependências, logs, lockfiles"
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "Regra prática: se o orquestrador não precisa ler, ele não deve nem ter a chance."
+        },
+        {
+          "type": "subheading",
+          "text": "Segurança que não depende de memória"
+        },
+        {
+          "type": "note",
+          "text": "regra dura vai no prompt de cada subagente"
+        },
+        {
+          "type": "code",
+          "text": "## Regras deste subagente\n- nada de commit, push ou PR\n- nada de escrita em sistemas remotos\n- editar só dentro do escopo recebido"
+        },
+        {
+          "type": "note",
+          "text": "exemplo ilustrativo"
+        },
+        {
+          "type": "callout",
+          "text": "⚠️ Pegadinha: o subagente não enxerga a skill da sessão principal. Se a regra não estiver no prompt dele, ela não vale para ele."
+        }
+      ]
+    },
+    {
+      "label": "Mudanças 5, 6 e 7 · qualidade e disciplina",
+      "heading": "Menos token também é menos retrabalho",
+      "blocks": [
+        {
+          "type": "subheading",
+          "text": "Revisão com desconfiança"
+        },
+        {
+          "type": "paragraph",
+          "text": "Quando uma IA revisa o trabalho de outra, cada achado é conferido no diff antes de virar tarefa. Revisor também inventa problema."
+        },
+        {
+          "type": "note",
+          "text": "achado não confirmado → descartado"
+        },
+        {
+          "type": "subheading",
+          "text": "Skills enxutas"
+        },
+        {
+          "type": "paragraph",
+          "text": "O essencial fica no arquivo principal. O detalhe vai para referências, lidas só quando o escopo pede."
+        },
+        {
+          "type": "note",
+          "text": "SKILL.md curto → references/ sob demanda"
+        },
+        {
+          "type": "subheading",
+          "text": "Disciplina de sessão"
+        },
+        {
+          "type": "paragraph",
+          "text": "Uma tarefa por chat, handoff curto entre sessões e loops de correção com limite e critério de parada."
+        },
+        {
+          "type": "note",
+          "text": "máx. 2 ou 3 iterações → para quando o teste passa"
+        }
+      ]
+    },
+    {
+      "label": "A lição",
+      "heading": "O gargalo não era o limite do plano. Era o desenho do fluxo.",
+      "blocks": [
+        {
+          "type": "flow",
+          "steps": [
+            "Medir (/context primeiro)",
+            "Delegar (orquestrador decide)",
+            "Isolar (barreiras de contexto)",
+            "Conferir (revisão com desconfiança)",
+            "Encerrar (uma tarefa por chat)"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Resultado: sessões mais leves, menos limite estourado e menos retrabalho, porque o escopo fica fechado desde o começo."
+        },
+        {
+          "type": "subheading",
+          "text": "💬 Como você controla o consumo da sua IA no dia a dia?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Você já mediu o que ocupa o contexto das suas sessões? Conta nos comentários o que funcionou para você."
+        }
+      ]
+    }
+  ]
+}

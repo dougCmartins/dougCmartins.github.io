@@ -26,6 +26,21 @@ function cleanText(value: string): string {
   return value.replace(/\s+/g, ' ').trim()
 }
 
+/** Element text with a space between sibling elements that have no whitespace between them. */
+function spacedText(element: HTMLElement): string {
+  let previousWasElement = false
+  return element.childNodes.map((node) => {
+    if (!isElement(node)) {
+      previousWasElement = false
+      return node.text
+    }
+    const text = spacedText(node)
+    const separator = previousWasElement ? ' ' : ''
+    previousWasElement = true
+    return separator + text
+  }).join('')
+}
+
 function toIsoDate(value: string): string {
   const match = value.match(/(\d{2})\/(\d{2})\/(\d{4})/)
   return match ? `${match[3]}-${match[2]}-${match[1]}` : ''
@@ -112,7 +127,7 @@ function pushFlow(blocks: BlogBlock[], steps: string[]): void {
 function collectBlocks(element: HTMLElement, section: BlogSection): void {
   for (const child of element.childNodes.filter(isElement)) {
     const tag = child.tagName.toLowerCase()
-    const text = cleanText(child.text)
+    const text = cleanText(spacedText(child))
 
     if (hasClass(child, SKIPPED_CLASSES) || tag === 'colgroup' || !text) continue
 
