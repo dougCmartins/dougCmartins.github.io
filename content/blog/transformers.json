@@ -1,0 +1,248 @@
+{
+  "slug": "transformers",
+  "title": "O ChatGPT não é mágica, é atenção !!",
+  "excerpt": "Como o Transformer e o Self-Attention resolveram o problema do contexto, e por que entender isso separa quem só usa IA de quem faz engenharia com ela.",
+  "date": "2026-11-26",
+  "readingMinutes": 3,
+  "tags": [
+    "InteligenciaArtificial",
+    "Transformers",
+    "LLM",
+    "MachineLearning",
+    "DeepLearning",
+    "EngenhariaDeSoftware",
+    "DesenvolvimentoDeSoftware",
+    "FullStack"
+  ],
+  "linkedinUrl": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7531688805813186560/",
+  "sections": [
+    {
+      "label": "Fundamentos de IA",
+      "heading": "Não existe mágica. Existe álgebra linear e atenção.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Sim, um LLM prevê o próximo token. Isso não é demérito, é a definição. O que mudou o jogo foi quanto contexto ele consegue usar para fazer essa previsão. E isso tem nome: Transformer, com o mecanismo de Self-Attention."
+        },
+        {
+          "type": "subheading",
+          "text": "O que o modelo realmente faz"
+        },
+        {
+          "type": "paragraph",
+          "text": "uma distribuição de probabilidade por passo"
+        },
+        {
+          "type": "code",
+          "text": "// entrada\n\"O hype passa, a computação ___\""
+        },
+        {
+          "type": "list",
+          "items": [
+            "0,71 — fica",
+            "0,16 — continua",
+            "0,07 — evolui"
+          ]
+        },
+        {
+          "type": "note",
+          "text": "ilustrativo · valores fictícios"
+        }
+      ]
+    },
+    {
+      "label": "O problema · contexto",
+      "heading": "Antes: a rede lia em fila e esquecia o começo da frase",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Redes recorrentes (RNN, LSTM) processam um token por vez e espremem tudo num único estado oculto. Quanto mais longa a sequência, mais o início se dilui."
+        },
+        {
+          "type": "table",
+          "rows": [
+            [
+              "Critério",
+              "RNN / LSTM",
+              "Transformer"
+            ],
+            [
+              "Como lê",
+              "Sequencial, token a token",
+              "Todos os tokens em paralelo"
+            ],
+            [
+              "Token distante",
+              "Chega fraco, depois de N passos",
+              "Ligação direta, um passo só"
+            ],
+            [
+              "Treinamento",
+              "Difícil paralelizar em GPU",
+              "Paralelo, escala com hardware"
+            ],
+            [
+              "Custo",
+              "Cresce linear com o texto",
+              "Atenção cresce ao quadrado (n²)"
+            ]
+          ]
+        },
+        {
+          "type": "callout",
+          "text": "⚠️ Não existe almoço grátis: olhar tudo com tudo resolve o contexto, mas custa memória e processamento. É por isso que a janela de contexto tem limite."
+        }
+      ]
+    },
+    {
+      "label": "O mecanismo · self-attention",
+      "heading": "Cada token pergunta: \"quem aqui importa para mim?\"",
+      "blocks": [
+        {
+          "type": "subheading",
+          "text": "Query, Key e Value"
+        },
+        {
+          "type": "note",
+          "text": "três projeções do mesmo embedding"
+        },
+        {
+          "type": "paragraph",
+          "text": "Query (Q): o que este token está procurando. Key (K): o que cada token oferece. Value (V): a informação que será misturada."
+        },
+        {
+          "type": "code",
+          "text": "Attention = softmax(Q·Kᵀ / √d) · V"
+        },
+        {
+          "type": "paragraph",
+          "text": "Q·K vira uma nota de relevância, o softmax transforma em pesos, e cada token sai como uma média ponderada dos outros. Várias \"cabeças\" fazem isso em paralelo, cada uma pegando um tipo de relação."
+        },
+        {
+          "type": "subheading",
+          "text": "Na prática: desambiguação"
+        },
+        {
+          "type": "note",
+          "text": "para onde \"banco\" olha?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Sentei no banco da praça"
+        },
+        {
+          "type": "paragraph",
+          "text": "Abri conta no banco"
+        },
+        {
+          "type": "paragraph",
+          "text": "Mesma palavra, mesmo embedding de entrada. Depois da atenção, os vetores saem diferentes: um puxado por \"praça\", outro por \"conta\". É assim que o contexto vira significado."
+        },
+        {
+          "type": "note",
+          "text": "ilustrativo · intensidade do verde = peso de atenção"
+        },
+        {
+          "type": "callout",
+          "text": "Leitura: não é \"entendimento\". É uma soma ponderada aprendida em bilhões de parâmetros. Funciona muito bem, mas é matemática."
+        }
+      ]
+    },
+    {
+      "label": "Correção comum · encoder x decoder",
+      "heading": "O GPT não tem encoder: ele é decoder-only",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "O Transformer original (2017) tinha encoder e decoder, pensado para tradução. Os modelos que viraram chat ficaram só com o decoder."
+        },
+        {
+          "type": "subheading",
+          "text": "Encoder-only"
+        },
+        {
+          "type": "paragraph",
+          "text": "Atenção nos dois sentidos: vê a frase inteira. Ótimo para entender e classificar."
+        },
+        {
+          "type": "paragraph",
+          "text": "ex.: BERT · busca, embeddings"
+        },
+        {
+          "type": "subheading",
+          "text": "Encoder-decoder"
+        },
+        {
+          "type": "paragraph",
+          "text": "O encoder lê a entrada, o decoder gera a saída consultando o encoder."
+        },
+        {
+          "type": "paragraph",
+          "text": "ex.: Transformer original, T5 · tradução"
+        },
+        {
+          "type": "subheading",
+          "text": "Decoder-only"
+        },
+        {
+          "type": "paragraph",
+          "text": "Atenção causal: cada token só vê os anteriores. Seu prompt e a resposta são a mesma sequência."
+        },
+        {
+          "type": "paragraph",
+          "text": "ex.: família GPT · a maioria dos LLMs de chat"
+        },
+        {
+          "type": "callout",
+          "text": "⚠️ Consequência prática: o modelo gera um token, coloca no fim da sequência e roda de novo. Resposta longa é literalmente um loop. Por isso ela custa tempo e tokens."
+        }
+      ]
+    },
+    {
+      "label": "Conclusão · conheça o limite",
+      "heading": "Quem entende a atenção sabe quando o modelo vai alucinar.",
+      "blocks": [
+        {
+          "type": "subheading",
+          "text": "Janela finita"
+        },
+        {
+          "type": "paragraph",
+          "text": "Passou do limite de contexto, o que ficou de fora não existe para o modelo."
+        },
+        {
+          "type": "subheading",
+          "text": "Meio esquecido"
+        },
+        {
+          "type": "paragraph",
+          "text": "Em contextos longos, informação no meio tende a receber menos atenção que no início e no fim."
+        },
+        {
+          "type": "subheading",
+          "text": "Plausível ≠ verdadeiro"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ele otimiza o próximo token provável. Sem fonte no contexto, inventa com confiança."
+        },
+        {
+          "type": "subheading",
+          "text": "Contexto é alavanca"
+        },
+        {
+          "type": "paragraph",
+          "text": "Dado certo no prompt (RAG, exemplos, restrições) muda a distribuição a seu favor."
+        },
+        {
+          "type": "subheading",
+          "text": "💬 Prompt é a interface. Atenção é o motor."
+        },
+        {
+          "type": "paragraph",
+          "text": "Estude a base: o hype passa, a computação fica. Você já parou para entender o que acontece dentro do modelo que usa todo dia? Conta nos comentários."
+        }
+      ]
+    }
+  ]
+}

@@ -110,6 +110,31 @@ describe('parseCaption', () => {
   })
 })
 
+describe('parseCaption extra paragraphs', () => {
+  it('keeps only the intro paragraph as excerpt, without LinkedIn calls to action', () => {
+    // Arrange
+    const markdown = [
+      '## Texto do post',
+      '',
+      'Título !!',
+      '',
+      'Introdução do post.',
+      '',
+      '📚 Quer ir além do carrossel? Leia no blog.',
+      '',
+      '💬 E você? Conta nos comentários.',
+      '',
+      '#IA #LLM',
+    ].join('\n')
+
+    // Act
+    const caption = parseCaption(markdown)
+
+    // Assert
+    expect(caption).toEqual({ title: 'Título !!', excerpt: 'Introdução do post.', tags: ['IA', 'LLM'] })
+  })
+})
+
 describe('slugFromFolder', () => {
   it('drops the date prefix', () => {
     // Arrange
