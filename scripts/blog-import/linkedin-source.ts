@@ -68,16 +68,23 @@ export function isPublished(entry: QueueEntry, hasPublishedMarker: boolean): boo
   return hasPublishedMarker || PUBLISHED_STATUSES.some(status => entry.status.toLowerCase().includes(status))
 }
 
-/** Reads the "## Texto do post" section: title line, intro lines and the hashtag line. */
+/**
+ * Reads the "## Texto do post" section: the title paragraph, the intro paragraph and the hashtag line.
+ * Extra paragraphs (calls to action such as "read more on the blog" or "comment below") are LinkedIn-only
+ * and stay out of the blog excerpt.
+ */
 export function parseCaption(markdown: string): PostCaption {
   const section = markdown.split(/^## Texto do post.*$/m)[1]?.split(/^## /m)[0] ?? ''
-  const lines = section.split('\n').map(line => line.trim()).filter(Boolean)
-  const tagLine = lines.find(line => line.startsWith('#')) ?? ''
-  const textLines = lines.filter(line => line !== tagLine)
+  const paragraphs = section
+    .split(/\n\s*\n/)
+    .map(paragraph => paragraph.split('\n').map(line => line.trim()).filter(Boolean).join(' '))
+    .filter(Boolean)
+  const tagLine = paragraphs.find(paragraph => paragraph.startsWith('#')) ?? ''
+  const textParagraphs = paragraphs.filter(paragraph => paragraph !== tagLine)
 
   return {
-    title: textLines[0] ?? '',
-    excerpt: textLines.slice(1).join(' '),
+    title: textParagraphs[0] ?? '',
+    excerpt: textParagraphs[1] ?? '',
     tags: tagLine.split(/\s+/).filter(tag => tag.startsWith('#')).map(tag => tag.slice(1)),
   }
 }
